@@ -1,0 +1,28 @@
+<html>
+    <head>
+	<link rel="stylesheet" href="Style.css">
+        <title>Projet2-Cryptographie</title>
+        </head>
+    <body>
+        <h1><u><b>Projet 2 - Cryptographie :</b></u></h1>
+		<br></br>
+		<h5>Entrez votre texte à  crypter :</h5>
+		<form method="POST">
+		<label><input type='text' name="phrase" placeholder='Entrez du texte ici'></label></form>
+		<br></br>
+		<h5>Votre mot de passe :</h5>
+		<form method="POST">
+		<label><input type='text' name="clé" placeholder='Entrez du texte ici'></label>
+		<button type="submit">Crypter</button>
+		</form>
+		<br></br>
+		<h5><button onclick="copierTexte()"></button>      Votre texte de sortie :	</h5>
+		<output id="res" class="box">Essai numéro 2</output>
+		<script>
+		function copierTexte() {
+			const texte = document.getElementById("result").textContent;
+			navigator.clipboard.writeText(texte);
+		}
+		</script>
+    </body>
+</html>
