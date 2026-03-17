@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Projet</title>
-</head>
-<body>
-    <h1>crypter</h1>
-
-    <form method="POST">
-        <input type="text" name="phrase" value="{{ ancienne_phrase }}" placeholder="Tape ta phrase..." required>
-        <input type="text" name="clé" value="{{ancienne_cle}}" placeholder="clé" required>
-        <button type="submit">crypter</button>
-    </form>
-
-    <hr>
-
-    <label for="res">Résultat :</label>
-    <input type="text" id="res" value="{{ resultat }}" readonly size="40">
-</body>
+<html>
+    <head>
+	<link rel="stylesheet" href="/templates/Style.css">
+        <title>Projet 2-Cryptographie</title>
+        </head>
+    <body>
+        <h1><u><b>Projet 2 - Cryptographie :</b></u></h1>
+		<br></br>
+		<h5>Entrez votre texte à  crypter :</h5>
+		<form method="POST">
+		<label><input type='text' name="phrase" value="{{ancienne_phrase}}" placeholder='Entrez du texte ici'></label></form>
+		<br></br>
+		<h5>Votre mot de passe :</h5>
+		<form method="POST">
+		<label><input type='text' name="clé" value="{{ancienne_cle}}" placeholder='Entrez du texte ici'></label>
+		<button type="submit">Crypter</button>
+		</form>
+		<br></br>
+		<output id="res" class="box">Essai numéro 2</output>
+    </br>
+        <output type="text" id="res" >{{ resultat }}</output>
+    </body>
 </html>
