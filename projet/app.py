@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request
-from test import test
-
+from cryptage import chiffre_de_vigenère
 app = Flask(__name__)
 
 @app.route('/', methods=['GET', 'POST'])
@@ -10,13 +9,10 @@ def home():
     cle = ""
     
     if request.method == 'POST':
-        
         saisie = request.form.get('phrase')
         cle=request.form.get("clé")
-        
-        message = test() 
-        
-   
+        message = chiffre_de_vigenère(saisie,cle) 
+        print(message)
     return render_template('index.html', resultat=message, ancienne_phrase=saisie, ancienne_cle=cle)
 
 if __name__ == '__main__':
