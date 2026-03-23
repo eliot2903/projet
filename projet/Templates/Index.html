@@ -1,0 +1,36 @@
+<html>
+    <head>
+	<link rel="stylesheet" href="Style.css">
+        <title>Projet2-Cryptographie</title>
+        </head>
+    <body>
+        <h1><u><b>Projet 2 - Cryptographie :</b></u></h1>
+		<img src="Logo.png" class="Image" align="right">
+		<br></br>
+		
+		<h5>Entrez votre texte à  crypter :</h5>
+		<form method="POST">
+		<label><textarea type='text' name="phrase" placeholder='Entrez du texte ici'></textarea></label></form>
+	
+	<h5>Votre mot de passe :</h5>
+
+		<form method="POST">
+		<div class="ligne-cle">
+		<label><textarea name="clé" placeholder='Entrez du texte ici'></textarea></label>
+		<button type="submit" class="Bouton">Crypter</button>
+		<label class="toggle" >   
+    <input class="toggle-checkbox" type="checkbox" onclick="if(this.checked) window.location.href='Décrypter.html'" />
+    <span class="toggle-switch"></span>
+</label>
+		</form>
+		</div>
+		<input onclick="changeText()"  type="button" value="Cacher le mot de passe" id="btn" class="Bouton2">
+
+
+		<p>Appuyez pour décrypter</p>
+		<br></br>
+		<h5>Votre texte de sortie :	</h5>
+		<output id="res" class="box">Essai numéro 2</output>
+	<script src="Action.js"></script>
+    </body>
+</html>
