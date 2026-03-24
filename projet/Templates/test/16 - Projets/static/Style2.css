@@ -1,0 +1,133 @@
+textarea, .box {
+    padding: 20px;
+    border-radius: 10px;
+    width: 500px;
+    display: inline-block;
+	background-color: #FFFFFF;
+	margin-left:20px;
+	font-size:18px
+	}
+textarea[name="clé"] {
+    padding: 0px 5px;
+    height: 40px ;
+    -webkit-text-security: disc;
+	font-size:30px
+}
+h1,h5 {
+	color: #000000;
+	margin-left:20px;
+
+}
+.Bouton {
+    padding: 10px 20px;
+    background-color: #000000;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    position: relative;
+    top: -0px;
+	color:FFD700;
+}
+body {
+    background: linear-gradient(135deg, #FFD700, #b39800);
+}
+
+.ligne-cle {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.switch {
+	left:335px;
+    display:flex;
+    width:140px;
+    height:50px;
+    border-radius:10px;
+	position: relative;
+    background:#000000;
+    padding:4px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+    cursor:pointer;
+}
+
+.side {
+    flex:1;
+    border-radius:8px;
+    position:relative;
+    transition:all 0.2s ease;
+    background:linear-gradient(#FFD700,#FFD700);
+}
+
+.indicator {
+    position: absolute;
+    width: 26px;
+    height: 5px;
+    border-radius: 3px;
+    background: #000000;
+    top: 75%;
+    left: 95px; 
+    transform: translateY(-45%);
+    transition: all 0.001s ease;
+	z-index:10;
+}
+
+.switch.active .indicator {
+    left: 66%;
+    background: #2ecc71;
+}
+.left {
+    margin-right:2px;
+    box-shadow:
+        0 4px 6px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    transform:translateY(-2px);
+}
+
+.right {
+    margin-left:2px;
+    box-shadow:
+        inset 0 3px 6px rgba(0,0,0,0.25);
+}
+
+.switch.active .left {
+    box-shadow:
+        inset 0 3px 6px rgba(0,0,0,0.25);
+    transform:translateY(1px);
+}
+
+
+.switch.active .right {
+    box-shadow:
+        0 4px 6px rgba(0,0,0,0.15),
+        inset 0 1px 0 rgba(255,255,255,0.8);
+    transform:translateY(-2px);
+}
+.image {
+    margin-right: 150px;
+    display: inline-block;
+    height: 209,33px;
+    width: 202,66px;
+    object-fit: cover;
+    overflow: hidden;
+}
+p {
+	color:000000;
+	position: relative;
+    margin-left:980px;
+	top:-50px;
+}
+.bouton2 {
+	padding: 7.5px 15px;
+	margin-left:20px;
+	background-color:000000;
+	color: FFD700;
+	border-radius: 5 px;
+}
+.Txt_btn {
+	position:relative;
+	margin-left:2px;
+	color:000000;
+	top:0px;
+	text-align:center;
+	font-size:12.5px
+}
