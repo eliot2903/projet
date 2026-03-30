@@ -1,15 +1,15 @@
 <DOCTYPE html>
 <html>
     <head>
-	<link rel="stylesheet" href="Style2.css">
-	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}"> -->
+	<!-- <link rel="stylesheet" href="Style2.css"> -->
+	<link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}">
         <title>Projet2-Cryptographie</title>
         </head>
     <body>
         <h1><u><b>Projet 2 - Cryptographie :</b></u></h1>
 		<h2>Décrypage en Hexadécimal</h2>
-		<img src="Logo2.png" class="Image" align="right">
-		<!-- <img src="{{ url_for('static', filename='Logo.png') }}" class="Image" align="right"> -->
+		<!--<img src="Logo2.png" class="Image" align="right">-->
+		 <img src="{{ url_for('static', filename='Logo.png') }}" class="Image" align="right"> 
 		<br></br>
 		
 		<h5>Entrez votre texte à  décrypter :</h5>
