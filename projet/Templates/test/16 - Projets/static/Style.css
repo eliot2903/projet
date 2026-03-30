@@ -13,7 +13,7 @@ textarea[name="clé"] {
     -webkit-text-security: disc;
 	font-size:30px
 }
-h1,h5 {
+h1,h5,h2 {
 	color: #FFD700;
 	margin-left:20px;
 
@@ -25,7 +25,17 @@ h1,h5 {
     cursor: pointer;
     height: 40px;
     position: relative;
-    top: -0px; /* Change cette valeur jusqu'à ce que ce soit bien */
+    top: 0px; /* Change cette valeur jusqu'à ce que ce soit bien */
+}
+.Bouton2 {
+	padding: 10px 20px;
+    background-color: #FFD700;
+    border: none;
+    cursor: pointer;
+    height: 40px;
+    position: relative;
+    top: -16px;
+	left:20px;
 }
 body {
     background: linear-gradient(135deg, #0f0f0f, #1d1d1d);
@@ -38,6 +48,18 @@ body {
 }
 .switch {
 	left:335px;
+    display:flex;
+    width:140px;
+    height:50px;
+    border-radius:10px;
+	position: relative;
+    background:#FFD700;
+    padding:4px;
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.15);
+    cursor:pointer;
+}
+.switch2 {
+	left:20px;
     display:flex;
     width:140px;
     height:50px;
@@ -112,16 +134,10 @@ body {
 p {
 	color:FFD700;
 	position: relative;
-    margin-left:955px;
+    margin-left:950px;
 	top:-50px;
 }
-.bouton2 {
-	padding: 7.5px 15px;
-	margin-left:20px;
-	background-color:FFD700;
-	color: 000000;
-	border-radius: 5 px;
-}
+
 .Txt_btn {
 	position:relative;
 	margin-left:2px;
@@ -129,4 +145,9 @@ p {
 	top:0px;
 	text-align:center;
 	font-size:12.5px
+}
+.lien {
+	position:relative;
+	left:385px;
+	color:FFD700;
 }
