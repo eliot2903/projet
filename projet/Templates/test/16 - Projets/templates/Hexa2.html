@@ -1,0 +1,31 @@
+<DOCTYPE html>
+<html>
+    <head>
+	<link rel="stylesheet" href="Style2.css">
+	<!-- <link rel="stylesheet" href="{{ url_for('static', filename='Style.css') }}"> -->
+        <title>Projet2-Cryptographie</title>
+        </head>
+    <body>
+        <h1><u><b>Projet 2 - Cryptographie :</b></u></h1>
+		<h2>Décrypage en Hexadécimal</h2>
+		<img src="Logo2.png" class="Image" align="right">
+		<!-- <img src="{{ url_for('static', filename='Logo.png') }}" class="Image" align="right"> -->
+		<br></br>
+		
+		<h5>Entrez votre texte à  décrypter :</h5>
+		<form method="POST">
+		<div>
+		<label><textarea type='text' name="phrase" placeholder='Entrez du texte ici'></textarea></label></form>
+		<button type="submit" class="Bouton2">Décrypter</button>
+		</div>
+	<h5>Votre texte de sortie :	</h5>
+		<output id="res" class="box">Résultat</output>
+		<a href="Index.html" class="lien">Cryptage de Vigenère</a>
+		<br></br>
+		
+<div class="switch2" id="toggle" checked onclick="if(!this.checked) window.location.href='Hexa.html'">
+    <div class="indicator"></div>
+
+    <div class="side left"><p class="Txt_btn">Crypter</p></div>
+    <div class="side right"><p class="Txt_btn">Décrypter</p></div>
+</div>
