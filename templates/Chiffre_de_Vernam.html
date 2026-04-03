@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <title>🔐 Chiffre de Vernam</title>
@@ -22,35 +22,36 @@
 <!-- CARTE -->
 <div class="card">
     <h1>🔐 Vernam Cipher</h1>
-
+<form method="POST">
     <label>Texte</label>
-    <textarea id="inputText" placeholder="Entrez votre message"></textarea>
-
-    <label>Clé (même longueur)</label>
-    <input type="text" id="key" placeholder="Entrez la clé">
+    <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
 
     <div class="buttons">
-        <button onclick="crypter()">Crypter</button>
+        <button type="submit" onclick="crypter()">Crypter</button>
     </div>
 
-    <label>Résultat</label>
-    <textarea id="output" readonly></textarea>
+    <label>Clé</label>
+    
+	<textarea name="Cle" id="output">{{resultat}}</textarea>
+	<label>Résultat</label>
+    <textarea name="Res" id="output" readonly>{{resultat2}}</textarea>
 </div>
 <div class="card">
     <h1>🔐 Vernam Cipher</h1>
 
     <label>Texte</label>
-    <textarea id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
+    <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
 
     <label>Clé (même longueur)</label>
-    <input type="text" id="key" placeholder="Entrez la clé">
-
+    <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
+</form>
     <div class="buttons">
         <button onclick="crypter()">Crypter</button>
     </div>
 
     <label>Résultat</label>
-    <textarea id="output" readonly></textarea>
+    <textarea name="Res2" id="output" readonly>{{resultat3}}</textarea>
+	
 </div>
 <script src="Action.js"></script>
 </body>
