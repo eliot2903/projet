@@ -1,10 +1,10 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <head>
 <meta charset="UTF-8">
 <title>🔐 Chiffre de Vernam</title>
 </head>
 <body>
-<link rel="stylesheet" href="Mon_style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style.css') }}"> 
 
 
 <div class="menu-btn" id="menu-btn">
@@ -15,11 +15,11 @@
 
 <div class="menu" id="menu">
   <button class="close-btn" id="close-btn">X</button>
-  <a href="Index2.html">Cryptage-Décryptage de Vigenère</a>
-  <a href="Chiffre_de_Vernam.html">Chiffre de Vernam</a>
+  <a href="/vigenere">Cryptage-Décryptage de Vigenère</a>
+  <a href="/">Chiffre de Vernam</a>
 </div>
 
-<!-- CARTE -->
+
 <div class="card">
     <h1>🔐 Vernam Cipher</h1>
 <form method="POST">
@@ -40,19 +40,18 @@
     <h1>🔐 Vernam Cipher</h1>
 
     <label>Texte</label>
-    <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
+    <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter">{{ancien_texte2}}</textarea>
 
     <label>Clé (même longueur)</label>
-    <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
-</form>
+    <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">{{ancienne_cle2}}
     <div class="buttons">
-        <button onclick="crypter()">Crypter</button>
+        <button type="submit">Crypter</button>
     </div>
-
+</form>
     <label>Résultat</label>
     <textarea name="Res2" id="output" readonly>{{resultat3}}</textarea>
 	
 </div>
-<script src="Action.js"></script>
+<script src="{{ url_for('static', filename='Action.js') }}"></script>
 </body>
 </html>
