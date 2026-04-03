@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <head>
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='0.9em' font-size='90'>🔐</text>
+</svg>">
+
 <meta charset="UTF-8">
-<title>🔐 Cryptage-Décryptage de Vigenère</title>
+<title>Cryptage-Décryptage de Vigenère</title>
 </head>
 <body>
 <link rel="stylesheet" href="Mon_style.css">
@@ -21,35 +26,37 @@
 <!-- CARTE -->
 <div class="card">
     <h1>🔏 Cryptage de Vigenère</h1>
-
+<form method="POST">
     <label>Texte</label>
-    <textarea id="inputText" placeholder="Entrez votre message"></textarea>
+    <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
 
     <label>Clé</label>
-    <input type="text" id="key" placeholder="Entrez la clé">
+    <input name="Cle" type="text" id="key" placeholder="Entrez la clé">
 
     <div class="buttons">
-        <button>Crypter</button>
+        <button type="submit">Crypter</button>
     </div>
 
     <label>Résultat</label>
-    <textarea id="output" readonly></textarea>
+    <textarea name="Res" id="output" readonly>{{resultat}}</textarea>
+</form>
 </div>
 <div class="card2">
+<form method="POST">
     <h1>🔏 Décryptage de Vigenère</h1>
 
     <label>Code</label>
-    <textarea id="inputText" placeholder="Entrez votre code crypté"></textarea>
+    <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre code crypté"></textarea>
 
     <label>Clé</label>
-    <input type="text" id="key" placeholder="Entrez la clé">
-
+    <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
+	</form>
     <div class="buttons">
-        <button>Décrypter</button>
+        <button type="submit">Décrypter</button>
     </div>
 
     <label>Résultat</label>
-    <textarea id="output" readonly></textarea>
+    <textarea name="Res2" id="output" readonly>{{resultat2}}</textarea>
 </div>
 <script src="Action.js"></script>
 </body>
