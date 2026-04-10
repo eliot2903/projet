@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='0.9em' font-size='90'>🔐</text>
+</svg>">
+<head>
+<meta charset="UTF-8">
+<title>Accueil - Cryptographie</title>
+
+<link rel="stylesheet" href="Mon_style2.css">
+</head>
+
+<body>
+
+<header>
+    <!-- LOGO (tu remplaces le src) -->
+    <div class="logo">
+		<a href="Jeu.html">
+        <img src="logo.png" alt="logo" class="logo-img">
+		</a>
+    </div>
+
+    <!-- MENU (tu modifies les liens) -->
+    <nav>
+		<a href="Page_d'accueil.html">Page d'accueil</a>
+		<a href="Description_Vigenère.html">Vigenère</a>
+		<a href="Description_Vernam.html">Vernam</a>
+		<a href="Description_Hexadecimal.html">Hexadécimal</a>
+    </nav>
+</header>
+
+<!-- CONTENU -->
+<div class="main">
+    <div class="card">
+
+        <h1>Vernam</h1>
+
+        <p>
+			Le chiffrement de Vernam est une méthode de cryptographie qui consiste à combiner un message avec une clé secrète de même longueur.
+		</p>
+
+		<p>
+			Chaque caractère du message est transformé à l’aide d’une opération logique (généralement le XOR) appliquée avec le caractère correspondant de la clé, produisant ainsi un texte chiffré.
+		</p>
+
+		<p>
+			Lorsque la clé est aléatoire, utilisée une seule fois et strictement confidentielle, cette méthode devient un « masque jetable » (one-time pad), offrant un niveau de sécurité maximal.
+		</p>
+		
+		<p>
+		Pour déchiffrer le message, il suffit d’appliquer la même opération avec la même clé, ce qui permet de retrouver le texte original.
+		</p>
+		<p>Accéder au cryptage de <a href="Chiffre_de_Vernam.html">Vernam</a>
+    </div>
+</div>
+<footer>
+⚠️ Une page cachée est présente dans cette page
+</footer>
+
+</body>
+</html>

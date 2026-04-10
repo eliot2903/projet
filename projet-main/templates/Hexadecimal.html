@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <head>
 <link rel="icon" href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
@@ -29,7 +29,7 @@
 
 <!-- CARTE 1 -->
 <div class="card">
-    <h1>🔐 Vernam</h1>
+    <h1>🔐 Hexadécimal</h1>
 
     <form method="POST">
         <label>Texte</label>
@@ -39,9 +39,6 @@
             <button type="submit">Crypter</button>
         </div>
 
-        <label>Clé</label>
-        <textarea name="Cle" id="output">{{resultat}}</textarea>
-
         <label>Résultat</label>
         <textarea name="Res" id="output" readonly>{{resultat2}}</textarea>
     </form>
@@ -49,14 +46,11 @@
 
 <!-- CARTE 2 -->
 <div class="card2">
-    <h1>🔐 Vernam</h1>
+    <h1>🔐 Hexadécimal</h1>
 
     <form method="POST">
         <label>Texte</label>
         <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
-
-        <label>Clé (même longueur)</label>
-        <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
 
         <div class="buttons">
             <button type="submit">Décrypter</button>
