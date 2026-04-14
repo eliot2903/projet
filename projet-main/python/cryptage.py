@@ -78,14 +78,14 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
                 indice=True
                 for i in range(len(texte_sans_espace)):
                     cle+=alphabet_min[random.randint(0,25)]
-                with open("python/cle.txt", "r", encoding="utf8") as file:
+                with open("projet-main/python/cle.txt", "r", encoding="utf8") as file:
                     for line in file.readlines():
                         line = line.replace("\n", "")
                         if line==cle:
                             indice=False
             
                 if indice:
-                    with open("python/cle.txt", "a", encoding="utf8") as file:
+                    with open("projet-main/python/cle.txt", "a", encoding="utf8") as file:
                         file.write(f"{cle}\n")
                     break
         code=chiffre_de_vigenère(texte,cle,mode)
