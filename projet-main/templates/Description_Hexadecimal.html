@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Accueil - Cryptographie</title>
 
-<link rel="stylesheet" href="Mon_style2.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style2.css') }}">
 </head>
 
 <body>
@@ -23,10 +23,10 @@
 
     <!-- MENU (tu modifies les liens) -->
     <nav>
-		<a href="Page_d'accueil.html">Page d'accueil</a>
-		<a href="Description_Vigenère.html">Vigenère</a>
-		<a href="Description_Vernam.html">Vernam</a>
-		<a href="Description_Hexadecimal.html">Hexadécimal</a>
+		<a href="/"></a>
+		<a href="/desc_vigenere">Vigenère</a>
+		<a href="/desc_vernam">Vernam</a>
+		<a href="/desc_hexa">Hexadécimal</a>
     </nav>
 </header>
 
