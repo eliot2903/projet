@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Accueil - Cryptographie</title>
 
-<link rel="stylesheet" href="Mon_style2.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style2.css') }}">
 </head>
 
 <body>
@@ -17,16 +17,16 @@
     <!-- LOGO (tu remplaces le src) -->
     <div class="logo">
 		<a href="Jeu.html">
-        <img src="logo.png" alt="logo" class="logo-img">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="logo-img">
 		</a>
     </div>
 
     <!-- MENU (tu modifies les liens) -->
     <nav>
-		<a href="Page_d'accueil.html">Page d'accueil</a>
-		<a href="Description_Vigenère.html">Vigenère</a>
-		<a href="Description_Vernam.html">Vernam</a>
-		<a href="Description_Hexadecimal.html">Hexadécimal</a>
+		<a href="/"></a>
+		<a href="/desc_vigenere">Vigenère</a>
+		<a href="/desc_vernam">Vernam</a>
+		<a href="/desc_hexa">Hexadécimal</a>
     </nav>
 </header>
 
