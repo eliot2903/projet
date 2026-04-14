@@ -29,13 +29,13 @@ def vernam():
     message = ""
     saisie = "" 
     cle = ""
-    
+
     if request.method == 'POST':
         saisie = request.form.get("Entre_texte")
 
         if saisie:
             message = Chiffre_de_Vernam(saisie) 
-            return render_template('Chiffre_de_Vernam.html', resultat=message[1], resultat2=message[0],ancienne_cle2=cle,ancien_texte2=saisie)
+            return render_template('Chiffre_de_Vernam.html', resultat=message[1], resultat2=message[0])
         
         else:
             saisie = request.form.get("Entre_texte2")
@@ -43,6 +43,7 @@ def vernam():
 
             if saisie and cle:
                 message=Chiffre_de_Vernam(saisie,cle,"décryptage")
+                print(message)
                 return render_template('Chiffre_de_Vernam.html', resultat3=message)
             
     return render_template('Chiffre_de_Vernam.html')
