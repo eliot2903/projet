@@ -33,7 +33,7 @@
 
     <form method="POST">
         <label>Texte</label>
-        <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message">{{ancien_texte}}</textarea>
+        <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
 
         <div class="buttons">
             <button type="submit">Crypter</button>
@@ -50,17 +50,17 @@
     <h1>🔐 Vernam</h1>
 
         <label>Texte</label>
-        <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter">{{ancien_texte2}}</textarea>
+        <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
 
-        <label>Clé (même longueur)</label>
-        <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">{{ancienne_cle2}}
+        <label>Clé </label>
+        <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
 
         <div class="buttons">
             <button type="submit">Décrypter</button>
         </div>
 
         <label>Résultat</label>
-        <textarea name="Res2" id="output" readonly>{{resultat3}}</textarea>
+        <textarea name="Res2" id="output" readonly></textarea>
     </form>
 </div>
 
