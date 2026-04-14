@@ -2,8 +2,14 @@ from flask import Flask, render_template, request
 from python.cryptage import *
 app = Flask(__name__)
 
-@app.route('/', methods=['GET', 'POST'])
+
+@app.route('/')
 def home():
+    return render_template("Page_d'acceuil.html")
+
+
+@app.route('/vernam', methods=['GET', 'POST'])
+def vernam():
     message = ""
     saisie = "" 
     cle = ""
@@ -16,9 +22,7 @@ def home():
             saisie = request.form.get("Entre_texte2")
             cle = request.form.get("Cle2")
             if saisie and cle:
-                print(saisie,cle)
                 message=Chiffre_de_Vernam(saisie,cle,"décryptage")
-                print(message)
                 return render_template('Chiffre_de_Vernam.html', resultat3=message)
     return render_template('Chiffre_de_Vernam.html')
 
@@ -32,15 +36,12 @@ def vigenere():
         cle=request.form.get("Cle")
         if saisie and cle:
             message = chiffre_de_vigenère(saisie,cle) 
-            print(message)
             return render_template('Cryptage_de_Vigenère.html', resultat=message,ancienne_cle=cle,ancien_texte=saisie)
         else:
             saisie = request.form.get("Entre_texte2")
             cle = request.form.get("Cle2")
             if saisie and cle:
-                print(saisie,cle)
                 message=chiffre_de_vigenère(saisie,cle,"décryptage")
-                print(message)
                 return render_template('Cryptage_de_Vigenère.html', resultat2=message,ancienne_cle2=cle,ancien_texte2=saisie)
     return render_template('Cryptage_de_Vigenère.html')
 
