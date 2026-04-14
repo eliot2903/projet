@@ -5,8 +5,19 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template("Page_d'acceuil.html")
+    return render_template("Page_d'accueil.html")
 
+@app.route('/desc_hexa')
+def desc_hexa():
+    return render_template("Description_Hexadecimal.html")
+
+@app.route('/desc_vernam')
+def desc_vernam():
+    return render_template("Description_Vernam.html")
+
+@app.route('/desc_vigenere')
+def desc_vigenere():
+    return render_template("Description_vigenère.html")
 
 @app.route('/vernam', methods=['GET', 'POST'])
 def vernam():
