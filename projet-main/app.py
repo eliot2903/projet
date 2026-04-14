@@ -65,7 +65,7 @@ def vernam():
 
         if saisie:
             message = Chiffre_de_Vernam(saisie)
-            ajouter_historique("Vigenère", saisie, message[0]) 
+            ajouter_historique("Vernam", saisie, message[0]) 
             return render_template('Chiffre_de_Vernam.html', resultat=message[1], resultat2=message[0])
         
         else:
@@ -76,7 +76,7 @@ def vernam():
                 
                 message=Chiffre_de_Vernam(saisie,cle,"décryptage")
                 print(message)
-                ajouter_historique("Vigenère", saisie, message)
+                ajouter_historique("Vernam", saisie, message)
                 return render_template('Chiffre_de_Vernam.html', resultat3=message)
             
     return render_template('Chiffre_de_Vernam.html')
@@ -115,13 +115,13 @@ def hexa():
 
         if saisie:
             message=cryptage_en_hexa(saisie)
-            ajouter_historique("Vigenère", saisie, message)
+            ajouter_historique("Héxadécimal", saisie, message)
             return render_template('Hexadecimal.html',resultat2=message)
         
         else:
             saisie=request.form.get("Entre_texte2")
             message=cryptage_en_hexa(saisie,"decryptage")
-            ajouter_historique("Vigenère", saisie, message)
+            ajouter_historique("Héxadécimal", saisie, message)
             return render_template('Hexadecimal.html',resultat3=message)
         
     return render_template('Hexadecimal.html')
