@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 <title>Chiffre de Vernam</title>
-<link rel="stylesheet" href="Mon_style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style.css') }}">
 </head>
 
 <body>
@@ -44,14 +44,11 @@
 
         <label>Résultat</label>
         <textarea name="Res" id="output" readonly>{{resultat2}}</textarea>
-    </form>
 </div>
 
-<!-- CARTE 2 -->
 <div class="card2">
     <h1>🔐 Vernam</h1>
 
-    <form method="POST">
         <label>Texte</label>
         <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
 
