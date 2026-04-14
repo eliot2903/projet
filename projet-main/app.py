@@ -19,6 +19,11 @@ def desc_vernam():
 def desc_vigenere():
     return render_template("Description_vigenère.html")
 
+@app.route('/jeu')
+def jeu():
+    return render_template("Jeu.html")
+
+
 @app.route('/vernam', methods=['GET', 'POST'])
 def vernam():
     message = ""
@@ -47,14 +52,31 @@ def vigenere():
         cle=request.form.get("Cle")
         if saisie and cle:
             message = chiffre_de_vigenère(saisie,cle) 
-            return render_template('Cryptage_de_Vigenère.html', resultat=message,ancienne_cle=cle,ancien_texte=saisie)
+            return render_template('Chiffre_de_Vigenère.html', resultat=message,ancienne_cle=cle,ancien_texte=saisie)
         else:
             saisie = request.form.get("Entre_texte2")
             cle = request.form.get("Cle2")
+            print(saisie,cle)
             if saisie and cle:
                 message=chiffre_de_vigenère(saisie,cle,"décryptage")
-                return render_template('Cryptage_de_Vigenère.html', resultat2=message,ancienne_cle2=cle,ancien_texte2=saisie)
-    return render_template('Cryptage_de_Vigenère.html')
+                print(message)
+                return render_template('Chiffre_de_Vigenère.html', resultat2=message,ancienne_cle2=cle,ancien_texte2=saisie)
+    return render_template('Chiffre_de_Vigenère.html')
+
+@app.route('/hexa', methods=['GET', 'POST'])
+def hexa():
+    saisie=""
+    if request.method == 'POST':
+        saisie=request.form.get("Entre_texte")
+        if saisie:
+            message=cryptage_en_hexa(saisie)
+            return render_template('Hexadecimal.html',resultat2=message)
+        else:
+            saisie=request.form.get("Entre_texte2")
+            message=cryptage_en_hexa(saisie,"decryptage")
+            return render_template('Hexadecimal.html',resultat3=message)
+    return render_template('Hexadecimal.html')
+
 
 if __name__ == '__main__':
     app.run(debug=True)

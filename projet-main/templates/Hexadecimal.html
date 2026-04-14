@@ -8,7 +8,7 @@
 
 <meta charset="UTF-8">
 <title>Chiffre de Vernam</title>
-<link rel="stylesheet" href="Mon_style.css">
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style.css') }}">
 </head>
 
 <body>
@@ -21,10 +21,10 @@
 
 <div class="menu" id="menu">
   <button class="close-btn" id="close-btn">X</button>
-  <a href="Page_d'accueil.html">Page d'accueil</a>
-  <a href="Index2.html">Cryptage-Décryptage de Vigenère</a>
-  <a href="Chiffre_de_Vernam.html">Chiffre de Vernam</a>
-  <a href="Hexadecimal.html">Hexadécimal</a>
+  <a href="/">Page d'accueil</a>
+  <a href="/vigenere">Cryptage-Décryptage de Vigenère</a>
+  <a href="/vernam">Chiffre de Vernam</a>
+  <a href="#">Hexadécimal</a>
 </div>
 
 <!-- CARTE 1 -->
@@ -41,14 +41,14 @@
 
         <label>Résultat</label>
         <textarea name="Res" id="output" readonly>{{resultat2}}</textarea>
-    </form>
+    
 </div>
 
 <!-- CARTE 2 -->
 <div class="card2">
     <h1>🔐 Hexadécimal</h1>
 
-    <form method="POST">
+    
         <label>Texte</label>
         <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
 
@@ -61,6 +61,6 @@
     </form>
 </div>
 
-<script src="Action.js"></script>
+<script src="{{ url_for('static', filename='Action.js') }}"></script>
 </body>
 </html>

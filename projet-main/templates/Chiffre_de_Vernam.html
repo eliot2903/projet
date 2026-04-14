@@ -21,10 +21,10 @@
 
 <div class="menu" id="menu">
   <button class="close-btn" id="close-btn">X</button>
-  <a href="Page_d'accueil.html">Page d'accueil</a>
-  <a href="Index2.html">Cryptage-Décryptage de Vigenère</a>
-  <a href="Chiffre_de_Vernam.html">Chiffre de Vernam</a>
-  <a href="Hexadecimal.html">Hexadécimal</a>
+  <a href="/">Page d'accueil</a>
+  <a href="/vigenere">Cryptage-Décryptage de Vigenère</a>
+  <a href="#">Chiffre de Vernam</a>
+  <a href="/hexa">Hexadécimal</a>
 </div>
 
 <!-- CARTE 1 -->
@@ -33,7 +33,7 @@
 
     <form method="POST">
         <label>Texte</label>
-        <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
+        <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message">{{ancien_texte}}</textarea>
 
         <div class="buttons">
             <button type="submit">Crypter</button>
@@ -50,10 +50,10 @@
     <h1>🔐 Vernam</h1>
 
         <label>Texte</label>
-        <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
+        <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter">{{ancien_texte2}}</textarea>
 
         <label>Clé (même longueur)</label>
-        <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
+        <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">{{ancienne_cle2}}
 
         <div class="buttons">
             <button type="submit">Décrypter</button>
@@ -64,6 +64,6 @@
     </form>
 </div>
 
-<script src="Action.js"></script>
+<script src="{{ url_for('static', filename='Action.js') }}"></script>
 </body>
 </html>
