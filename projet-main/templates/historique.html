@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Historique - Cryptographie</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='Mon_style2.css') }}">
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; color: white; }
+        th, td { padding: 12px; border: 1px solid #FFD700; text-align: left; }
+        th { background-color: rgba(255, 215, 0, 0.2); }
+    </style>
+</head>
+<body>
+<header>
+    <nav>
+        <a href="/">Accueil</a>
+        <a href="/vigenere">Vigenère</a>
+        <a href="/vernam">Vernam</a>
+        <a href="/hexa">Hexadécimal</a>
+        <a href="/historique">Historique</a>
+    </nav>
+</header>
+
+<div class="main">
+    <div class="card" style="width: 90%; max-width: 1000px;">
+        <h1>📜 Historique des 10 derniers messages</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Méthode</th>
+                    <th>Message Original</th>
+                    <th>Résultat</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in historique %}
+                <tr>
+                    <td>{{ item[0] }}</td>
+                    <td>{{ item[1] }}</td>
+                    <td>{{ item[2] }}</td>
+                    <td>{{ item[3] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

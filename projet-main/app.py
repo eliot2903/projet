@@ -1,5 +1,35 @@
 from flask import Flask, render_template, request
 from python.cryptage import *
+import sqlite3
+
+def init_bd():
+    conn = sqlite3.connect('historique.db')
+    cursor = conn.cursor()
+    # Création de la table historique
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS historique (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            methode TEXT NOT NULL,
+            texte_original TEXT NOT NULL,
+            resultat TEXT NOT NULL,
+            date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
+init_bd()
+
+def ajouter_historique(methode, original, resultat):
+    conn = sqlite3.connect('historique.db')
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO historique (methode, texte_original, resultat)
+        VALUES (?, ?, ?)
+    ''', (methode, original, resultat))
+    conn.commit()
+    conn.close()
+
 app = Flask(__name__)
 
 
@@ -34,7 +64,8 @@ def vernam():
         saisie = request.form.get("Entre_texte")
 
         if saisie:
-            message = Chiffre_de_Vernam(saisie) 
+            message = Chiffre_de_Vernam(saisie)
+            ajouter_historique("Vigenère", saisie, message[0]) 
             return render_template('Chiffre_de_Vernam.html', resultat=message[1], resultat2=message[0])
         
         else:
@@ -42,8 +73,10 @@ def vernam():
             cle = request.form.get("Cle2")
 
             if saisie and cle:
+                
                 message=Chiffre_de_Vernam(saisie,cle,"décryptage")
                 print(message)
+                ajouter_historique("Vigenère", saisie, message)
                 return render_template('Chiffre_de_Vernam.html', resultat3=message)
             
     return render_template('Chiffre_de_Vernam.html')
@@ -59,7 +92,8 @@ def vigenere():
         cle=request.form.get("Cle")
 
         if saisie and cle:
-            message = chiffre_de_vigenère(saisie,cle) 
+            message = chiffre_de_vigenère(saisie,cle)
+            ajouter_historique("Vigenère", saisie, message) 
             return render_template('Chiffre_de_Vigenère.html', resultat=message,ancienne_cle=cle,ancien_texte=saisie)
         
         else:
@@ -68,6 +102,7 @@ def vigenere():
 
             if saisie and cle:
                 message=chiffre_de_vigenère(saisie,cle,"décryptage")
+                ajouter_historique("Vigenère", saisie, message)
                 return render_template('Chiffre_de_Vigenère.html', resultat2=message,ancienne_cle2=cle,ancien_texte2=saisie)
             
     return render_template('Chiffre_de_Vigenère.html')
@@ -80,15 +115,25 @@ def hexa():
 
         if saisie:
             message=cryptage_en_hexa(saisie)
+            ajouter_historique("Vigenère", saisie, message)
             return render_template('Hexadecimal.html',resultat2=message)
         
         else:
             saisie=request.form.get("Entre_texte2")
             message=cryptage_en_hexa(saisie,"decryptage")
+            ajouter_historique("Vigenère", saisie, message)
             return render_template('Hexadecimal.html',resultat3=message)
         
     return render_template('Hexadecimal.html')
 
+@app.route('/historique')
+def historique():
+    conn = sqlite3.connect('historique.db')
+    cursor = conn.cursor()
+    cursor.execute('SELECT methode, texte_original, resultat, date FROM historique ORDER BY id DESC LIMIT 10')
+    donnees = cursor.fetchall()
+    conn.close()
+    return render_template('historique.html', historique=donnees)
 
 if __name__ == '__main__':
     app.run(debug=True)
