@@ -1,5 +1,9 @@
 import string
 import random
+import sqlite3
+import sqlite3
+import os
+
 
 def chiffre_de_vigenère(texte:str,cle:str,mode="cryptage"):
     """
@@ -72,21 +76,14 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
         alphabet_min=string.ascii_lowercase
         alphabet_maj=string.ascii_uppercase
         if cle==None:
-            cle=""
             texte_sans_espace=texte.replace(" ","")
             while True:
-                indice=True
+                cle = ""
                 for i in range(len(texte_sans_espace)):
-                    cle+=alphabet_min[random.randint(0,25)]
-                with open("projet-main/python/cle.txt", "r", encoding="utf8") as file:
-                    for line in file.readlines():
-                        line = line.replace("\n", "")
-                        if line==cle:
-                            indice=False
-            
-                if indice:
-                    with open("projet-main/python/cle.txt", "a", encoding="utf8") as file:
-                        file.write(f"{cle}\n")
+                    cle += alphabet_min[random.randint(0, 25)]
+    
+                if not cle_existe(cle):  # la clé n'existe pas encore en DB
+                    ajouter_cle(cle)
                     break
         code=chiffre_de_vigenère(texte,cle,mode)
         if mode=="cryptage":
@@ -108,4 +105,40 @@ def test_fonction ():
     assert Chiffre_de_Vernam("")=="veuiller écrire un texte"
     assert cryptage_en_hexa("")=="veuiller écrire un texte"
     assert chiffre_de_vigenère("123","test")=="123"
-test_fonction
+test_fonction()
+
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def init_bd():
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'cle.db'))
+    cursor = conn.cursor()
+    cursor.execute('''
+    CREATE TABLE IF NOT EXISTS cles (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        cle TEXT NOT NULL,
+        taille INTEGER NOT NULL
+    )
+    ''')
+    conn.commit()
+    conn.close()
+
+init_bd()
+
+def ajouter_cle(cle):
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'cle.db'))
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO cles (cle, taille)
+        VALUES (?, ?)
+    ''', (cle, len(cle)))
+    conn.commit()
+    conn.close()
+
+def cle_existe(cle):
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'cle.db'))
+    cursor = conn.cursor()
+    cursor.execute('SELECT 1 FROM cles WHERE cle = ?', (cle,))
+    resultat = cursor.fetchone()
+    conn.close()
+    return resultat is not None

@@ -3,7 +3,7 @@ from python.cryptage import *
 import sqlite3
 
 def init_bd():
-    conn = sqlite3.connect('historique.db')
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
     cursor = conn.cursor()
     # Création de la table historique
     cursor.execute('''
@@ -21,7 +21,7 @@ def init_bd():
 init_bd()
 
 def ajouter_historique(methode, original, resultat):
-    conn = sqlite3.connect('historique.db')
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO historique (methode, texte_original, resultat)
@@ -128,7 +128,7 @@ def hexa():
 
 @app.route('/historique')
 def historique():
-    conn = sqlite3.connect('historique.db')
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
     cursor = conn.cursor()
     cursor.execute('SELECT methode, texte_original, resultat, date FROM historique ORDER BY id DESC LIMIT 10')
     donnees = cursor.fetchall()
