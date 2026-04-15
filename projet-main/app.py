@@ -2,34 +2,6 @@ from flask import Flask, render_template, request
 from python.cryptage import *
 import sqlite3
 
-def init_bd():
-    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
-    cursor = conn.cursor()
-    # Création de la table historique
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS historique (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            methode TEXT NOT NULL,
-            texte_original TEXT NOT NULL,
-            resultat TEXT NOT NULL,
-            date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    ''')
-    conn.commit()
-    conn.close()
-
-init_bd()
-
-def ajouter_historique(methode, original, resultat):
-    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
-    cursor = conn.cursor()
-    cursor.execute('''
-        INSERT INTO historique (methode, texte_original, resultat)
-        VALUES (?, ?, ?)
-    ''', (methode, original, resultat))
-    conn.commit()
-    conn.close()
-
 app = Flask(__name__)
 
 

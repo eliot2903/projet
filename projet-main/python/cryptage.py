@@ -82,7 +82,7 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
                 for i in range(len(texte_sans_espace)):
                     cle += alphabet_min[random.randint(0, 25)]
     
-                if not cle_existe(cle):  # la clé n'existe pas encore en DB
+                if not cle_existe(cle):  
                     ajouter_cle(cle)
                     break
         code=chiffre_de_vigenère(texte,cle,mode)
@@ -123,6 +123,20 @@ def init_bd():
     conn.commit()
     conn.close()
 
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
+    cursor = conn.cursor()
+    cursor.execute('''
+        CREATE TABLE IF NOT EXISTS historique (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            methode TEXT NOT NULL,
+            texte_original TEXT NOT NULL,
+            resultat TEXT NOT NULL,
+            date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        )
+    ''')
+    conn.commit()
+    conn.close()
+
 init_bd()
 
 def ajouter_cle(cle):
@@ -142,3 +156,13 @@ def cle_existe(cle):
     resultat = cursor.fetchone()
     conn.close()
     return resultat is not None
+
+def ajouter_historique(methode, original, resultat):
+    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
+    cursor = conn.cursor()
+    cursor.execute('''
+        INSERT INTO historique (methode, texte_original, resultat)
+        VALUES (?, ?, ?)
+    ''', (methode, original, resultat))
+    conn.commit()
+    conn.close()
