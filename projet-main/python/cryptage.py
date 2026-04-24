@@ -1,7 +1,6 @@
 import string
 import random
 import sqlite3
-import sqlite3
 import os
 
 
@@ -108,10 +107,10 @@ def test_fonction ():
 test_fonction()
 
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+chemin = os.path.dirname(os.path.abspath(__file__))
 
 def init_bd():
-    conn = sqlite3.connect(os.path.join(BASE_DIR, 'cle.db'))
+    conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
     cursor = conn.cursor()
     cursor.execute('''
     CREATE TABLE IF NOT EXISTS cles (
@@ -123,7 +122,7 @@ def init_bd():
     conn.commit()
     conn.close()
 
-    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
+    conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
     cursor = conn.cursor()
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS historique (
@@ -140,7 +139,7 @@ def init_bd():
 init_bd()
 
 def ajouter_cle(cle):
-    conn = sqlite3.connect(os.path.join(BASE_DIR, 'cle.db'))
+    conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO cles (cle, taille)
@@ -150,7 +149,7 @@ def ajouter_cle(cle):
     conn.close()
 
 def cle_existe(cle):
-    conn = sqlite3.connect(os.path.join(BASE_DIR, 'cle.db'))
+    conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
     cursor = conn.cursor()
     cursor.execute('SELECT 1 FROM cles WHERE cle = ?', (cle,))
     resultat = cursor.fetchone()
@@ -158,7 +157,7 @@ def cle_existe(cle):
     return resultat is not None
 
 def ajouter_historique(methode, original, resultat):
-    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
+    conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO historique (methode, texte_original, resultat)
