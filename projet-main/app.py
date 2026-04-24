@@ -100,7 +100,7 @@ def hexa():
 
 @app.route('/historique')
 def historique():
-    conn = sqlite3.connect(os.path.join(BASE_DIR, 'historique.db'))
+    conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
     cursor = conn.cursor()
     cursor.execute('SELECT methode, texte_original, resultat, date FROM historique ORDER BY id DESC LIMIT 10')
     donnees = cursor.fetchall()
