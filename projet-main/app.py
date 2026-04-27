@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from python.cryptage import *
 import sqlite3
 from datetime import *
+import os 
 import datetime
 
 
@@ -25,6 +26,10 @@ def desc_vernam():
 def desc_vigenere():
     return render_template("Description_vigenère.html")
 
+@app.route('/desc_trithemius')
+def desc_vigenere():
+    return render_template("Description_Trithémius.html")
+
 @app.route('/jeu')
 def jeu():
     return render_template("Jeu.html")
@@ -41,7 +46,8 @@ def vernam():
 
         if saisie:
             message = Chiffre_de_Vernam(saisie)
-            ajouter_historique("Vernam", saisie, message[0]) 
+            date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            ajouter_historique("Vernam", saisie, message[0],date) 
             return render_template('Chiffre_de_Vernam.html', resultat=message[1], resultat2=message[0])
         
         else:
@@ -51,8 +57,8 @@ def vernam():
             if saisie and cle:
                 
                 message=Chiffre_de_Vernam(saisie,cle,"décryptage")
-                print(message)
-                ajouter_historique("Vernam", saisie, message)
+                date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                ajouter_historique("Vernam", saisie, message,date)
                 return render_template('Chiffre_de_Vernam.html', resultat3=message)
             
     return render_template('Chiffre_de_Vernam.html')
@@ -69,7 +75,8 @@ def vigenere():
 
         if saisie and cle:
             message = chiffre_de_vigenère(saisie,cle)
-            ajouter_historique("Vigenère", saisie, message) 
+            date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            ajouter_historique("Vigenère", saisie, message,date) 
             return render_template('Chiffre_de_Vigenère.html', resultat=message,ancienne_cle=cle,ancien_texte=saisie)
         
         else:
@@ -78,7 +85,8 @@ def vigenere():
 
             if saisie and cle:
                 message=chiffre_de_vigenère(saisie,cle,"décryptage")
-                ajouter_historique("Vigenère", saisie, message)
+                date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                ajouter_historique("Vigenère", saisie, message,date)
                 return render_template('Chiffre_de_Vigenère.html', resultat2=message,ancienne_cle2=cle,ancien_texte2=saisie)
             
     return render_template('Chiffre_de_Vigenère.html')
@@ -91,13 +99,15 @@ def hexa():
 
         if saisie:
             message=cryptage_en_hexa(saisie)
-            ajouter_historique("Héxadécimal", saisie, message)
+            date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            ajouter_historique("Héxadécimal", saisie, message,date)
             return render_template('Hexadecimal.html',resultat2=message)
         
         else:
             saisie=request.form.get("Entre_texte2")
             message=cryptage_en_hexa(saisie,"decryptage")
-            ajouter_historique("Héxadécimal", saisie, message)
+            date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            ajouter_historique("Héxadécimal", saisie, message,date)
             return render_template('Hexadecimal.html',resultat3=message)
         
     return render_template('Hexadecimal.html')
@@ -120,15 +130,15 @@ def trithemus():
 
         if saisie:
             message=chiffre_de_Trithémius(saisie)
-            date = datetime.datetime.now()
-            ajouter_historique("Trithémius", saisie, message,date.strftime("%Y-%m-%d %H:%M:%S"))
+            date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            ajouter_historique("Trithémius", saisie, message,date)
             return render_template('Chiffre_de_Trithémius.html',resultat1=message)
         
         else:
             saisie=request.form.get("Entre_texte2")
             message=chiffre_de_Trithémius(saisie,"decryptage")
             date = datetime.datetime.now()
-            ajouter_historique("Trithémius", saisie, message,message,date.strftime("%Y-%m-%d %H:%M:%S"))
+            ajouter_historique("Trithémius", saisie,message,date)
             return render_template('Chiffre_de_Trithémius.html',resultat2=message)
         
     return render_template('Chiffre_de_Trithémius.html')

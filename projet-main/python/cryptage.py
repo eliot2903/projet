@@ -116,20 +116,20 @@ def chiffre_de_Trithémius(texte,mode="cryptage"):
         if i in alphabet_maj:
             indice_a=alphabet_maj.index(i)
             if mode=="cryptage":
-                texte_final+=alphabet_maj[(indice_a+indice)%25]
+                texte_final+=alphabet_maj[(indice_a+indice)%26]
             else:
-                texte_final+=alphabet_maj[(indice_a-indice)%25]
+                texte_final+=alphabet_maj[(indice_a-indice)%26]
             indice+=1
         elif i in alphabet_min:
             indice_a=alphabet_min.index(i)
             if mode=="cryptage":
-                texte_final+=alphabet_min[(indice_a+indice)%25]
+                texte_final+=alphabet_min[(indice_a+indice)%26]
             else:
-                texte_final+=alphabet_min[(indice_a-indice)%25]
+                texte_final+=alphabet_min[(indice_a-indice)%26]
             indice+=1
         else:
             texte_final+=i
-        if indice>=25:
+        if indice>=26:
             indice=0
     return texte_final
 
@@ -187,7 +187,7 @@ def ajouter_historique(methode, original, resultat,date):
     cursor = conn.cursor()
     cursor.execute('''
         INSERT INTO historique (methode, texte_original, resultat,date)
-        VALUES (?, ?, ?)
-    ''', (methode, original, resultat))
+        VALUES (?, ?, ?,?)
+    ''', (methode, original, resultat,date))
     conn.commit()
     conn.close()
