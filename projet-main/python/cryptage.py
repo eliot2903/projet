@@ -2,7 +2,7 @@ import string
 import random
 import sqlite3
 import os
-
+import datetime
 
 def chiffre_de_vigenère(texte:str,cle:str,mode="cryptage"):
     """
@@ -106,6 +106,32 @@ def test_fonction ():
     assert chiffre_de_vigenère("123","test")=="123"
 test_fonction()
 
+def chiffre_de_Trithémius(texte,mode="cryptage"):
+    alphabet_min=string.ascii_lowercase
+    alphabet_maj=string.ascii_uppercase
+    indice=0
+    indice_a=0
+    texte_final=""
+    for i in texte:
+        if i in alphabet_maj:
+            indice_a=alphabet_maj.index(i)
+            if mode=="cryptage":
+                texte_final+=alphabet_maj[(indice_a+indice)%25]
+            else:
+                texte_final+=alphabet_maj[(indice_a-indice)%25]
+            indice+=1
+        elif i in alphabet_min:
+            indice_a=alphabet_min.index(i)
+            if mode=="cryptage":
+                texte_final+=alphabet_min[(indice_a+indice)%25]
+            else:
+                texte_final+=alphabet_min[(indice_a-indice)%25]
+            indice+=1
+        else:
+            texte_final+=i
+        if indice>=25:
+            indice=0
+    return texte_final
 
 chemin = os.path.dirname(os.path.abspath(__file__))
 
@@ -130,7 +156,7 @@ def init_bd():
             methode TEXT NOT NULL,
             texte_original TEXT NOT NULL,
             resultat TEXT NOT NULL,
-            date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            date TEXT NOT NULL
         )
     ''')
     conn.commit()
@@ -156,11 +182,11 @@ def cle_existe(cle):
     conn.close()
     return resultat is not None
 
-def ajouter_historique(methode, original, resultat):
+def ajouter_historique(methode, original, resultat,date):
     conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
     cursor = conn.cursor()
     cursor.execute('''
-        INSERT INTO historique (methode, texte_original, resultat)
+        INSERT INTO historique (methode, texte_original, resultat,date)
         VALUES (?, ?, ?)
     ''', (methode, original, resultat))
     conn.commit()

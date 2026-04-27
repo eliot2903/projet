@@ -14,14 +14,14 @@
 <body>
 
 <header>
-    <!-- LOGO (tu remplaces le src) -->
+    
     <div class="logo">
 		<a href="/jeu">
-        <img src="logo.png" alt="logo" class="logo-img">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="logo-img">
 		</a>
     </div>
 
-    <!-- MENU (tu modifies les liens) -->
+    
     <nav>
 		<a href="/">Acceuil</a>
 		<a href="/desc_vigenere">Vigenère</a>
@@ -31,7 +31,7 @@
     </nav>
 </header>
 
-<!-- CONTENU -->
+
 <div class="main">
     <div class="card">
 

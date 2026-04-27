@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <head>
 <link rel="icon" href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
@@ -9,7 +9,8 @@
 <title>Cryptage-Décryptage de Vigenère</title>
 </head>
 <body>
-<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style.css') }}"> 
+
 
 <div class="menu-btn" id="menu-btn">
     <span></span>
@@ -18,13 +19,9 @@
 </div>
 
 <div class="menu" id="menu">
-  <button class="close-btn" id="close-btn">X</button>
-  <a href="/">Page d'accueil</a>
-  <a href="#">Cryptage-Décryptage de Vigenère</a>
-  <a href="/vernam">Chiffre de Vernam</a>
-   <a href="/hexa">Hexadécimal</a>
-   <a href="/Trithémius">Trithémius</a>
-   <a href="/historique">Historique</a>
+  <button class="close-btn" id="close-btn">×</button>
+  <a href="Index2.html">Cryptage-Décryptage de Vigenère</a>
+  <a href="Chiffre_de_Vernam.html">Chiffre de Vernam</a>
 </div>
 
 <!-- CARTE -->
@@ -32,10 +29,10 @@
     <h1>🔏 Cryptage de Vigenère</h1>
 <form method="POST">
     <label>Texte</label>
-    <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
+    <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message">{{ancien_texte}}</textarea>
 
     <label>Clé</label>
-    <input name="Cle" type="text" id="key" placeholder="Entrez la clé">
+    <input name="Cle" type="text" id="key" placeholder="Entrez la clé">{{ancienne_cle}}
 
     <div class="buttons">
         <button type="submit">Crypter</button>
@@ -54,10 +51,11 @@
 
     <label>Clé</label>
     <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
+
     <div class="buttons">
         <button type="submit">Décrypter</button>
     </div>
-    </form>
+</form>
     <label>Résultat</label>
     <textarea name="Res2" id="output" readonly>{{resultat2}}</textarea>
 </div>

@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request
 from python.cryptage import *
 import sqlite3
+from datetime import *
+import datetime
+
+
 
 app = Flask(__name__)
 
@@ -104,8 +108,30 @@ def historique():
     cursor = conn.cursor()
     cursor.execute('SELECT methode, texte_original, resultat, date FROM historique ORDER BY id DESC LIMIT 10')
     donnees = cursor.fetchall()
+    print(donnees)
     conn.close()
     return render_template('historique.html', historique=donnees)
+
+@app.route('/Trithémius', methods=['GET', 'POST'])
+def trithemus():
+    saisie=""
+    if request.method == 'POST':
+        saisie=request.form.get("Entre_texte")
+
+        if saisie:
+            message=chiffre_de_Trithémius(saisie)
+            date = datetime.datetime.now()
+            ajouter_historique("Trithémius", saisie, message,date.strftime("%Y-%m-%d %H:%M:%S"))
+            return render_template('Chiffre_de_Trithémius.html',resultat1=message)
+        
+        else:
+            saisie=request.form.get("Entre_texte2")
+            message=chiffre_de_Trithémius(saisie,"decryptage")
+            date = datetime.datetime.now()
+            ajouter_historique("Trithémius", saisie, message,message,date.strftime("%Y-%m-%d %H:%M:%S"))
+            return render_template('Chiffre_de_Trithémius.html',resultat2=message)
+        
+    return render_template('Chiffre_de_Trithémius.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
