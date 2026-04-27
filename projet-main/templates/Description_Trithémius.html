@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='0.9em' font-size='90'>🔐</text>
+</svg>">
+<head>
+<meta charset="UTF-8">
+<title>Accueil - Cryptographie</title>
+
+<link rel="stylesheet" href="Mon_style2.css">
+</head>
+
+<body>
+
+<header>
+    <!-- LOGO (tu remplaces le src) -->
+    <div class="logo">
+		<a href="Jeu.html">
+        <img src="logo.png" alt="logo" class="logo-img">
+		</a>
+    </div>
+
+    <!-- MENU (tu modifies les liens) -->
+    <nav>
+		<a href="Page_d'accueil.html">Page d'accueil</a>
+		<a href="Description_Vigenère.html">Vigenère</a>
+		<a href="Description_Vernam.html">Vernam</a>
+		<a href="Description_Hexadecimal.html">Hexadécimal</a>
+		<a href="Description_Trithémius.html">Trithémius</a>
+    </nav>
+</header>
+
+<!-- CONTENU -->
+<div class="main">
+    <div class="card">
+<h1>Chiffre de Trithémius</h1>
+
+<p>
+    Le chiffre de Trithémius est une méthode de cryptage polyalphabétique
+    qui repose sur un décalage progressif des lettres du message.
+    Chaque caractère est chiffré en utilisant un décalage croissant :
+    la première lettre est décalée de 0, la deuxième de 1, la troisième de 2, et ainsi de suite.
+</p>
+
+<p>
+    Ce procédé utilise une table appelée <em>tabula recta</em>,
+    composée de plusieurs alphabets décalés. À mesure que l’on avance dans le texte,
+    on utilise l’alphabet suivant, ce qui rend le cryptage plus difficile à casser
+    qu’un simple chiffrement de César.
+</p>
+
+<p>
+    Pour décoder un message chiffré avec la méthode de Trithémius,
+    il suffit d’appliquer les décalages inverses dans l’ordre :
+    la première lettre est décalée de 0 vers l’arrière, la deuxième de 1,
+    la troisième de 2, etc., jusqu’à retrouver le texte original.
+</p>
+
+
+<p>Accéder au cryptage <a href="Chiffre_de_Trithémius.html">Hexadécimal</a></p>
+    </div>
+</div>
+<footer>
+⚠️ Une page cachée est présente dans cette page
+</footer>
+</body>
+</html>
