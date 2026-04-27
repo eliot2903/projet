@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<head>
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='0.9em' font-size='90'>🔐</text>
+</svg>">
+
+<meta charset="UTF-8">
+<title>Cryptage-Décryptage de Vigenère</title>
+</head>
+<body>
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style.css') }}">
+
+<div class="menu-btn" id="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="menu" id="menu">
+  <button class="close-btn" id="close-btn">X</button>
+  <a href="/">Page d'accueil</a>
+  <a href="#">Cryptage-Décryptage de Vigenère</a>
+  <a href="/vernam">Chiffre de Vernam</a>
+   <a href="/hexa">Hexadécimal</a>
+   <a href="/Trithémius">Trithémius</a>
+   <a href="/historique">Historique</a>
+</div>
+
+<!-- CARTE -->
+<div class="card">
+    <h1>🔏 Cryptage de Vigenère</h1>
+<form method="POST">
+    <label>Texte</label>
+    <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
+
+    <label>Clé</label>
+    <input name="Cle" type="text" id="key" placeholder="Entrez la clé">
+
+    <div class="buttons">
+        <button type="submit">Crypter</button>
+    </div>
+
+    <label>Résultat</label>
+    <textarea name="Res" id="output" readonly>{{resultat}}</textarea>
+
+</div>
+<div class="card2">
+
+    <h1>🔏 Décryptage de Vigenère</h1>
+
+    <label>Code</label>
+    <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre code crypté"></textarea>
+
+    <label>Clé</label>
+    <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
+    <div class="buttons">
+        <button type="submit">Décrypter</button>
+    </div>
+    </form>
+    <label>Résultat</label>
+    <textarea name="Res2" id="output" readonly>{{resultat2}}</textarea>
+</div>
+<script src="{{ url_for('static', filename='Action.js') }}"></script>
+</body>
+</html>

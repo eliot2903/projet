@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='0.9em' font-size='90'>🔐</text>
+</svg>">
+    <meta charset="UTF-8">
+	<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style3.css') }}">
+    <title>Conversion Hexadécimale</title>
+<header>
+	 <div class="logo">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="logo-img">
+    </div>
+    <nav>
+		<a href="/">Acceuil</a>
+		<a href="/desc_vigenere">Vigenère</a>
+		<a href="/desc_vernam">Vernam</a>
+		<a href="/desc_hexa">Hexadécimal</a>
+        <a href="/historique">Historique</a>
+    </nav>
+	</header>
+</head>
+<body>
+
+	<h1>🔐 Hexadécimal</h1>
+
+<div class="card">
+
+    <!-- Zone du jeu -->
+    <div class="jeu">
+        <h2>Teste-toi 🔎</h2>
+        <p>Décode ce message :</p>
+        <p><strong id="message"></strong></p>
+        <input type="text" id="rep" placeholder="Ta réponse">
+        <br>
+        <button onclick="verifier()">Valider</button>
+        <p id="resultat"></p>
+    </div>
+
+    <!-- Tableau de conversion horizontal -->
+    <div class="card2">
+        <h2>Table de conversion Hex → ASCII</h2>
+        <table>
+            <tr>
+                <th>41</th><td>A</td><th>42</th><td>B</td><th>43</th><td>C</td>
+                <th>44</th><td>D</td><th>45</th><td>E</td><th>46</th><td>F</td>
+                <th>47</th><td>G</td><th>48</th><td>H</td><th>49</th><td>I</td>
+                <th>4A</th><td>J</td><th>4B</th><td>K</td><th>4C</th><td>L</td>
+                <th>4D</th><td>M</td>
+            </tr>
+            <tr>
+                <th>4E</th><td>N</td><th>4F</th><td>O</td><th>50</th><td>P</td>
+                <th>51</th><td>Q</td><th>52</th><td>R</td><th>53</th><td>S</td>
+                <th>54</th><td>T</td><th>55</th><td>U</td><th>56</th><td>V</td>
+                <th>57</th><td>W</td><th>58</th><td>X</td><th>59</th><td>Y</td>
+                <th>5A</th><td>Z</td>
+            </tr>
+            <tr>
+                <th>61</th><td>a</td><th>62</th><td>b</td><th>63</th><td>c</td>
+                <th>64</th><td>d</td><th>65</th><td>e</td><th>66</th><td>f</td>
+                <th>67</th><td>g</td><th>68</th><td>h</td><th>69</th><td>i</td>
+                <th>6A</th><td>j</td><th>6B</th><td>k</td><th>6C</th><td>l</td>
+                <th>6D</th><td>m</td>
+            </tr>
+            <tr>
+                <th>6E</th><td>n</td><th>6F</th><td>o</td><th>70</th><td>p</td>
+                <th>71</th><td>q</td><th>72</th><td>r</td><th>73</th><td>s</td>
+                <th>74</th><td>t</td><th>75</th><td>u</td><th>76</th><td>v</td>
+                <th>77</th><td>w</td><th>78</th><td>x</td><th>79</th><td>y</td>
+                <th>7A</th><td>z</td>
+            </tr>
+        </table>
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='script2.js') }}"></script>
+    
+
+
+
+</body>
+</html>
