@@ -27,7 +27,7 @@ def desc_vigenere():
     return render_template("Description_vigenère.html")
 
 @app.route('/desc_trithemius')
-def desc_vigenere():
+def desc_trithemius():
     return render_template("Description_Trithémius.html")
 
 @app.route('/jeu')
