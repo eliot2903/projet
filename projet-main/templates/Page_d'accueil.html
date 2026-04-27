@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='0.9em' font-size='90'>🔐</text>
+</svg>">
+<head>
+<meta charset="UTF-8">
+<title>Accueil - Cryptographie</title>
+
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style2.css') }}">
+</head>
+
+<body>
+
+<header>
+    
+    <div class="logo">
+		<a href="/jeu">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="logo-img">
+		</a>
+    </div>
+
+    
+    <nav>
+		<a href="/">Accueil</a>
+		<a href="/desc_vigenere">Vigenère</a>
+		<a href="/desc_vernam">Vernam</a>
+		<a href="/desc_hexa">Hexadécimal</a>
+        <a href="/historique">Historique</a>
+        <a href="/Trithémius">Trithémius</a>
+    </nav>
+</header>
+
+
+<div class="main">
+    <div class="card">
+
+        <h1>La Cryptographie</h1>
+
+        <p>
+            La cryptographie est une discipline essentielle de la sécurité informatique
+            qui permet de protéger les informations en les transformant en données
+            illisibles sans clé spécifique.
+        </p>
+
+        <p>
+            Elle est utilisée pour sécuriser les communications, protéger les données
+            sensibles et garantir l’authenticité des échanges sur Internet.
+        </p>
+
+        <p>
+            Grâce à différents algorithmes de chiffrement, il est possible de convertir
+            un message clair en message codé, puis de le restituer uniquement aux
+            personnes autorisées.
+        </p>
+
+    </div>
+</div>
+<footer>
+⚠️ Une page cachée est présente dans cette page
+</footer>
+</body>
+</html>

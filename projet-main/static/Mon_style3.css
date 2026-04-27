@@ -1,0 +1,132 @@
+/* RESET */
+* {
+    box-sizing: border-box;
+}
+
+/* BODY */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: radial-gradient(circle at top, #020617, #000);
+    color: #FFD700;
+	display: flex;
+    flex-direction: column;
+}
+
+/* TITRE */
+h1 {
+	padding-left:60px;
+    margin-top: 40px;
+    font-size: 3em;
+    text-shadow: 0 0 10px #FFD700;
+}
+/* MENU */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 40px;
+}
+
+/* LOGO */
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* MENU */
+nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #FFD700;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #00aa00;
+}
+
+/* SECTION PRINCIPALE */
+.main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+}
+/* CONTENEUR PRINCIPAL */
+.card {
+    margin-top: 40px;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* ZONE JEU */
+.jeu {
+    background: #111;
+    padding: 25px;
+    border-radius: 15px;
+    width: 320px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* INPUT */
+.jeu input {
+    padding: 10px;
+    width: 220px;
+    background-color: black;
+    border: 1px solid #FFD700;
+    color: #FFD700;
+    text-align: center;
+}
+
+/* BOUTON */
+.jeu button {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #FFD700;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.jeu button:hover {
+    background-color: #e6c200;
+}
+
+/* RESULTAT */
+#resultat {
+    margin-top: 15px;
+}
+
+/* TABLEAU */
+.card2 {
+    background: #111;
+    padding: 25px;
+    border-radius: 15px;
+    max-width: 800px;
+    overflow-x: auto;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+}
+
+/* TABLE */
+table {
+    border-collapse: collapse;
+    white-space: nowrap;
+}
+
+th, td {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+}
+
+th {
+    background-color: rgba(255, 215, 0, 0.1);
+}
+
+tr:hover {
+    background-color: rgba(255, 215, 0, 0.15);
+    transition: 0.2s;
+}
