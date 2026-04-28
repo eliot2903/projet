@@ -68,7 +68,7 @@ def cryptage_en_hexa(mot,mode="cryptage"):
 def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
     """
     Cette algorithme marche comme le chiffre de vigenère mais il utilise une clé unique.
-    On vérifie donc si la clé est bien unique grace au fichier cle.txt.
+    On vérifie donc si la clé est bien unique grace a la base de données cle.
     Si la clé existe on en trouve une autre sinon on l'écrit dans le fichier
     """
     if texte :
