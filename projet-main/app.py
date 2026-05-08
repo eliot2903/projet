@@ -115,7 +115,6 @@ def historique():
     cursor = conn.cursor()
     cursor.execute('SELECT methode, texte_original, resultat, date FROM historique ORDER BY id DESC LIMIT 10')
     donnees = cursor.fetchall()
-    print(donnees)
     conn.close()
     return render_template('historique.html', historique=donnees)
 
