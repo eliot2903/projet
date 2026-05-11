@@ -18,8 +18,7 @@ def chiffre_de_vigenère(texte:str,cle:str,mode="cryptage"):
             cle=cle.replace(" ","")
             for i in cle:
                 if i not in alphabet_maj and i not in alphabet_min:
-                    print("test")
-                    return "la cle ne doit avoir que des lettres de l'alphabet"
+                    return texte
             mot_crypté=""
             indice_a=None
             indice_b=None
@@ -50,7 +49,7 @@ def chiffre_de_vigenère(texte:str,cle:str,mode="cryptage"):
                 else:
                     mot_crypté+=texte[i]
             return mot_crypté
-    return "veuiller écrire un texte"
+    return texte
 
 def cryptage_en_hexa(mot,mode="cryptage"):
     """
@@ -62,7 +61,7 @@ def cryptage_en_hexa(mot,mode="cryptage"):
         else:
             code=bytes.fromhex(mot).decode('utf-8')
         return code
-    return "veuiller écrire un texte"
+    return mot
 
 
 def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
@@ -89,27 +88,35 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
             return code,cle
         else:
             return code
-    return "veuiller écrire un texte"
+    return texte
 
 
 
 def test_fonction ():
+    """
+    fonction qui vérifie que les algorithmes fonctionne
+    """
     assert chiffre_de_vigenère("j'aime la nsi","testeststetse")=="c'eafi dt flm"
     assert chiffre_de_vigenère("c'eafi dt flm","testeststetse","decrypte")=="j'aime la nsi"
     assert cryptage_en_hexa("bonjour")=="626f6e6a6f7572"
     assert cryptage_en_hexa("626f6e6a6f7572","décryptage")=="bonjour"
     assert Chiffre_de_Vernam('jfsejxi', 'irfvvdr',"décryptage")=="bonjour"
     assert Chiffre_de_Vernam("tmmmy uachx","mibbkymlwu","decrypter")=="hello world"
-    assert chiffre_de_vigenère("","")=="veuiller écrire un texte"
-    assert Chiffre_de_Vernam("")=="veuiller écrire un texte"
-    assert cryptage_en_hexa("")=="veuiller écrire un texte"
+    assert chiffre_de_vigenère("","")==""
+    assert Chiffre_de_Vernam("")==""
+    assert cryptage_en_hexa("")==""
     assert chiffre_de_vigenère("123","test")=="123"
 test_fonction()
 
 def chiffre_de_Trithémius(texte,mode="cryptage"):
+    """
+    cette fonction utilise le chiffre de trithémius pour cypter/décrypter un texte. cette algorithme est similaire au chiffre de vigenere mais ne nécéssite pas de clé.
+    chaque lettre du texte est décaler par son indice dans la phrase 
+    Ex: mot = nqw car m+a=n o+b=q et t+c=w
+    """
     alphabet_min=string.ascii_lowercase
     alphabet_maj=string.ascii_uppercase
-    indice=0
+    indice=1
     indice_a=0
     texte_final=""
     for i in texte:
@@ -136,6 +143,9 @@ def chiffre_de_Trithémius(texte,mode="cryptage"):
 chemin = os.path.dirname(os.path.abspath(__file__))
 
 def init_bd():
+    """
+    Cette fonction initialiste les bases de données cle.db et historique.db
+    """
     conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
     cursor = conn.cursor()
     cursor.execute('''
@@ -165,6 +175,9 @@ def init_bd():
 init_bd()
 
 def ajouter_cle(cle):
+    """
+    Cette fonction rajoute une cle et sa taille dans la base de donnée cle.db
+    """
     conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
     cursor = conn.cursor()
     cursor.execute('''
@@ -175,6 +188,9 @@ def ajouter_cle(cle):
     conn.close()
 
 def cle_existe(cle):
+    """
+    Cette fonction vérifie si une clé est déja enregistré
+    """
     conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
     cursor = conn.cursor()
     cursor.execute('SELECT 1 FROM cles WHERE cle = ?', (cle,))
@@ -183,6 +199,9 @@ def cle_existe(cle):
     return resultat is not None
 
 def ajouter_historique(methode, original, resultat,date):
+    """
+    Cette fonction permet de sauvegarder l'historique des algorithmes utilisé et leur résultat dans la base de donnée historique.db
+    """
     conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
     cursor = conn.cursor()
     cursor.execute('''
