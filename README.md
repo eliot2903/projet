@@ -23,9 +23,8 @@ Ce projet est une application web interactive développée avec **Flask** qui pe
 
 ### Installation
 1. Installez la bibliothèque Flask :
-   ```bash
    pip install flask
-
+   
 ```
 
 ### Lancement
