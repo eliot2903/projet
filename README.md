@@ -1,55 +1,53 @@
--Plateforme de Cryptographie - Projet NSI
+```markdown
+# 🔐 Plateforme de Cryptographie - Projet NSI
 
--Description:
+## 📝 Description
+Ce projet est une application web interactive développée avec **Flask** qui permet de sécuriser des messages en utilisant plusieurs méthodes de chiffrement historiques et informatiques. Elle offre une interface moderne pour expérimenter le **Chiffre de Vigenère**, le **Chiffre de Vernam**, le **Chiffre de Trithémius** et la conversion **Hexadécimale**.
 
-Ce projet est une application web interactive développée avec Flask qui permet de sécuriser des messages en utilisant trois méthodes de chiffrement historiques : le Chiffre de Vigenère , le Chiffre de Vernam et le chiffrement en Héxadécimal.
+## ✨ Fonctionnalités
+* **Chiffre de Vigenère** : Cryptage et décryptage de textes à l'aide d'une clé alphabétique.
+* **Chiffre de Vernam** : Utilisation d'une clé à usage unique et aléatoire de la même longueur que le message pour une sécurité maximale.
+* **Chiffre de Trithémius** : Chiffrement par décalage progressif automatique (sans clé).
+* **Conversion Hexadécimale** : Transformation de texte clair en base 16 et inversement.
+* **Gestion des clés** : Génération automatique de clés pour Vernam et vérification de leur unicité via une base de données (`cle.db`) et un fichier de sauvegarde (`cle.txt`).
+* **Historique des messages** : Suivi des 10 dernières opérations de chiffrement stockées en base de données SQLite.
+* **Mode "Teste-toi" (Jeu)** : Un module interactif pour s'entraîner à décoder des messages en hexadécimal.
 
--Fonctionnalités:
+## 🛠 Technologies utilisées
+* **Back-end** : Python 3, Flask, SQLite3.
+* **Front-end** : HTML5, CSS3 (avec plusieurs thèmes de style) et JavaScript.
 
-    Chiffre de Vigenère : Cryptage et décryptage de textes à l'aide d'une clé alphabétique.
+## 🚀 Installation et Lancement
+### Prérequis
+* Avoir Python installé sur votre machine.
 
-    Chiffre de Vernam : Utilisation d'une clé à usage unique et aléatoire de la même longueur que le message pour une sécurité maximale.
+### Installation
+1. Installez la bibliothèque Flask :
+   ```bash
+   pip install flask
 
-    Gestion des clés : Génération automatique de clés uniques pour Vernam et vérification de leur unicité via un fichier de stockage (cle.txt).
+```
 
-    Conversion Hexadécimale : Fonctions de support pour transformer du texte en hexadécimal.
+### Lancement
 
--Technologies utilisées
+1. Lancez le script principal :
+```bash
+python app.py
 
-    Langage : Python(flask)
+```
 
-    Front-end : HTML, CSS et JavaScript 
 
--Installation et Lancement:
--Prérequis:
+2. Ouvrez votre navigateur à l'adresse suivante : `http://127.0.0.1:5000`
 
-    Avoir Python installé sur votre machine.
+## 📁 Structure du projet
 
--Installation:
+* `app.py` : Serveur principal gérant les routes, le jeu et la logique de l'application.
+* `python/cryptage.py` : Module contenant les algorithmes de chiffrement (Vigenère, Vernam, Trithémius, Hexa) et les tests unitaires (`assert`).
+* `python/cle.db` & `python/historique.db` : Bases de données SQLite pour garantir l'unicité des clés et stocker l'historique.
+* `python/cle.txt` : Registre de secours pour l'unicité des clés de Vernam.
+* `templates/` : Pages HTML (Accueil, interfaces de cryptage, descriptions, jeu et historique).
+* `static/` : Fichiers de style (CSS multiples) et scripts JavaScript pour l'interactivité.
 
-    Installez la bibliothèque Flask :
-    Bash
+---
 
-    pip install flask
-
--Lancement:
-
-    Lancez le serveur Flask :
-    
-    lancer le script app.py
-
-    Ouvrez votre navigateur à l'adresse suivante : http://127.0.0.1:5000
-
--Structure du projet
-
-    app.py : Serveur principal gérant les routes et la logique de l'application.
-
-    python/cryptage.py : Module contenant les algorithmes de chiffrement et les tests unitaires.
-
-    python/cle.txt : Registre servant à garantir l'unicité des clés de Vernam.
-
-    templates/ : Pages HTML.
-
-    static/ : Fichiers de style CSS et scripts JavaScript.
-
-Auteur : Eliot / Clément
+**Auteurs :** Eliot / Clément
