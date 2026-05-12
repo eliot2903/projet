@@ -49,9 +49,9 @@ python app.py
 
 ---
 
-##adresse web :
+## adresse web :
 ```bash
-https://cryptographie-k5wx.onrender.com/
+* https://cryptographie-k5wx.onrender.com/
 ```
 
 **Auteurs :** Eliot / Clément
