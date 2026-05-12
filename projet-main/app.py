@@ -14,6 +14,11 @@ app = Flask(__name__)
 def home():
     return render_template("Page_d'accueil.html")
 
+@app.route('/google')
+def google():
+    return render_template("googleb8007cc217fdedbc.html")
+
+
 @app.route('/desc_hexa')
 def desc_hexa():
     return render_template("Description_Hexadecimal.html")
