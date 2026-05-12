@@ -14,7 +14,7 @@ app = Flask(__name__)
 def home():
     return render_template("Page_d'accueil.html")
 
-@app.route('/google')
+@app.route('/googleb8007cc217fdedbc.html')
 def google():
     return render_template("googleb8007cc217fdedbc.html")
 
