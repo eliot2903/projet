@@ -51,9 +51,11 @@ python app.py
 
 ## adresse web :
 ```bash
-https://cryptographie-k5wx.onrender.com/
+https://cryptographie-k5wx.onrender.com
+https://cryptographie.ddns.net
 ```
 
 hebergé sur render.com
+nom de domaine sur no.ip
 
 **Auteurs :** Eliot / Clément
