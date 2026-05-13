@@ -45,7 +45,7 @@ python app.py
 * `python/cle.db` & `python/historique.db` : Bases de données SQLite pour garantir l'unicité des clés et stocker l'historique.
 * `python/cle.txt` : Registre de secours pour l'unicité des clés de Vernam.
 * `templates/` : Pages HTML (Accueil, interfaces de cryptage, descriptions, jeu et historique).
-* `static/` : Fichiers de style (CSS multiples) et scripts JavaScript pour l'interactivité.
+* `static/` : Fichiers de style (CSS multiples) et scripts JavaScript pour l'interactivité et Logo .
 
 ---
 
