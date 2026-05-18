@@ -5,7 +5,7 @@
 Ce projet est une application web interactive développée avec **Flask** qui permet de sécuriser des messages en utilisant plusieurs méthodes de chiffrement historiques et informatiques. Elle offre une interface moderne pour expérimenter le **Chiffre de Vigenère**, le **Chiffre de Vernam**, le **Chiffre de Trithémius** et la conversion **Hexadécimale**.
 
 ## ✨ Fonctionnalités
-* **`Chiffre de Vigenère`** : Cryptage et décryptage de textes à l'aide d'une clé alphabétique.
+* `Chiffre de Vigenère` : Cryptage et décryptage de textes à l'aide d'une clé alphabétique.
 * **Chiffre de Vernam** : Utilisation d'une clé à usage unique et aléatoire de la même longueur que le message pour une sécurité maximale.
 * **Chiffre de Trithémius** : Chiffrement par décalage progressif automatique (sans clé).
 * **Conversion Hexadécimale** : Transformation de texte clair en base 16 et inversement.
