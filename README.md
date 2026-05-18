@@ -14,8 +14,8 @@ Ce projet est une application web interactive développée avec **Flask** qui pe
 * `Mode Jeu` : Un module interactif pour s'entraîner à décoder des messages en hexadécimal.
 
 ## 🛠 Technologies utilisées
-* **Back-end** : Python 3, Flask, SQLite3.
-* **Front-end** : HTML5, CSS3 (avec plusieurs thèmes de style) et JavaScript.
+* `Back-end` : Python 3, Flask, SQLite3.
+* `Front-end` : HTML5, CSS3 (avec plusieurs thèmes de style) et JavaScript.
 
 ## 🚀 Installation et Lancement
 ### Prérequis
