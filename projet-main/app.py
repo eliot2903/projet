@@ -89,27 +89,6 @@ def vigenere():
             
     return render_template('Chiffre_de_Vigenère.html')
 
-@app.route('/hexa', methods=['GET', 'POST'])
-def hexa():
-    saisie=""
-    if request.method == 'POST':
-        saisie=request.form.get("Entre_texte")
-        date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-
-        if saisie:
-            message=cryptage_en_hexa(saisie)
-            ajouter_historique("Héxadécimal", saisie, message,date)
-            return render_template('Hexadecimal.html',resultat2=message)
-        
-        else:
-            saisie=request.form.get("Entre_texte2")
-            message=cryptage_en_hexa(saisie,"decryptage")
-            if saisie :
-                ajouter_historique("Héxadécimal", saisie, message,date)
-            return render_template('Hexadecimal.html',resultat3=message)
-        
-    return render_template('Hexadecimal.html')
-
 @app.route('/historique')
 def historique():
     conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
@@ -119,25 +98,51 @@ def historique():
     conn.close()
     return render_template('historique.html', historique=donnees)
 
+@app.route('/hexa', methods=['GET', 'POST'])
+def hexa():
+    if request.method == 'POST':
+        date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        if "Entre_texte" in request.form:
+            saisie = request.form.get("Entre_texte")
+            if saisie: 
+                message = cryptage_en_hexa(saisie)
+                ajouter_historique("Héxadécimal", saisie, message, date)
+                return render_template('Hexadecimal.html', resultat2=message)
+        
+        elif "Entre_texte2" in request.form:
+            saisie = request.form.get("Entre_texte2")
+            if saisie:  
+                try:
+                    message = cryptage_en_hexa(saisie, "decryptage")
+                    ajouter_historique("Héxadécimal", saisie, message, date)
+                    return render_template('Hexadecimal.html', resultat3=message)
+                except ValueError:
+                    return render_template('Hexadecimal.html', resultat3="Erreur : Code hexadécimal invalide")
+        
+    return render_template('Hexadecimal.html')
+
 @app.route('/trithemius', methods=['GET', 'POST'])
 def trithemus():
-    saisie=""
     if request.method == 'POST':
-        saisie=request.form.get("Entre_texte")
         date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        if saisie:
-            message=chiffre_de_Trithémius(saisie)
-            ajouter_historique("Trithémius", saisie, message,date)
-            return render_template('Chiffre_de_Trithémius.html',resultat1=message)
+
+        # Formulaire de Cryptage soumis
+        if "Entre_texte" in request.form:
+            saisie = request.form.get("Entre_texte")
+            if saisie:
+                message = chiffre_de_Trithémius(saisie)
+                ajouter_historique("Trithémius", saisie, message, date)
+                return render_template('Chiffre_de_Trithémius.html', resultat1=message)
         
-        else:
-            saisie=request.form.get("Entre_texte2")
-            message=chiffre_de_Trithémius(saisie,"decryptage")
-            if saisie :
-                ajouter_historique("Trithémius", saisie,message,date)
-            return render_template('Chiffre_de_Trithémius.html',resultat2=message)
+        # Formulaire de Décryptage soumis
+        elif "Entre_texte2" in request.form:
+            saisie = request.form.get("Entre_texte2")
+            if saisie:
+                message = chiffre_de_Trithémius(saisie, "decryptage")
+                ajouter_historique("Trithémius", saisie, message, date)
+                return render_template('Chiffre_de_Trithémius.html', resultat2=message)
         
     return render_template('Chiffre_de_Trithémius.html')
-
 if __name__ == '__main__':
     app.run(debug=True)

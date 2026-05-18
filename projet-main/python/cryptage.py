@@ -16,40 +16,41 @@ def chiffre_de_vigenère(texte:str,cle:str,mode="cryptage"):
             alphabet_min=string.ascii_lowercase
             alphabet_maj=string.ascii_uppercase
             cle=cle.replace(" ","")
-            if cle :
-                for i in cle:
-                    if i not in alphabet_maj and i not in alphabet_min:
-                        return texte
-                mot_crypté=""
-                indice_a=None
-                indice_b=None
-                indice_cle=0
-                for i in range(len(texte)):
-                    if texte[i] in alphabet_maj or texte[i] in alphabet_min:
-                        est_maj=False
-                        if texte[i] in alphabet_maj:
-                            est_maj=True
-                            indice_a=alphabet_maj.index(texte[i])
-                        else:
-                            indice_a=alphabet_min.index(texte[i])
-                        if cle[indice_cle]in alphabet_maj:
-                            indice_b=alphabet_maj.index(cle[indice_cle])
-                        else:
-                            indice_b=alphabet_min.index(cle[indice_cle])
-                        indice_cle=(indice_cle+1)%len(cle)
-                        if mode=="cryptage":
-                            if est_maj:
-                                mot_crypté+=alphabet_maj[(indice_a+indice_b)%26]
-                            else:
-                                mot_crypté+=alphabet_min[(indice_a+indice_b)%26]
-                        else:
-                            if est_maj:
-                                mot_crypté+=alphabet_maj[(indice_a-indice_b)%26]
-                            else:
-                                mot_crypté+=alphabet_min[(indice_a-indice_b)%26]
+            if not cle :
+                return texte
+            for i in cle:
+                if i not in alphabet_maj and i not in alphabet_min:
+                    return texte
+            mot_crypté=""
+            indice_a=None
+            indice_b=None
+            indice_cle=0
+            for i in range(len(texte)):
+                if texte[i] in alphabet_maj or texte[i] in alphabet_min:
+                    est_maj=False
+                    if texte[i] in alphabet_maj:
+                        est_maj=True
+                        indice_a=alphabet_maj.index(texte[i])
                     else:
-                        mot_crypté+=texte[i]
-                return mot_crypté
+                        indice_a=alphabet_min.index(texte[i])
+                    if cle[indice_cle]in alphabet_maj:
+                        indice_b=alphabet_maj.index(cle[indice_cle])
+                    else:
+                        indice_b=alphabet_min.index(cle[indice_cle])
+                    indice_cle=(indice_cle+1)%len(cle)
+                    if mode=="cryptage":
+                        if est_maj:
+                            mot_crypté+=alphabet_maj[(indice_a+indice_b)%26]
+                        else:
+                            mot_crypté+=alphabet_min[(indice_a+indice_b)%26]
+                    else:
+                        if est_maj:
+                            mot_crypté+=alphabet_maj[(indice_a-indice_b)%26]
+                        else:
+                            mot_crypté+=alphabet_min[(indice_a-indice_b)%26]
+                else:
+                    mot_crypté+=texte[i]
+            return mot_crypté
     return texte
 
 def cryptage_en_hexa(mot,mode="cryptage"):
