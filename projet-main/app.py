@@ -76,7 +76,7 @@ def vigenere():
         if saisie and cle:
             message = chiffre_de_vigenère(saisie,cle)
             ajouter_historique("Vigenère", saisie, message,date) 
-            return render_template('Chiffre_de_Vigenère.html', resultat=message,ancienne_cle=cle,ancien_texte=saisie)
+            return render_template('Chiffre_de_Vigenère.html', resultat=message)
         
         else:
             saisie = request.form.get("Entre_texte2")
@@ -85,7 +85,7 @@ def vigenere():
             if saisie and cle:
                 message=chiffre_de_vigenère(saisie,cle,"décryptage")
                 ajouter_historique("Vigenère", saisie, message,date)
-                return render_template('Chiffre_de_Vigenère.html', resultat2=message,ancienne_cle2=cle,ancien_texte2=saisie)
+                return render_template('Chiffre_de_Vigenère.html', resultat2=message)
             
     return render_template('Chiffre_de_Vigenère.html')
 
@@ -104,7 +104,8 @@ def hexa():
         else:
             saisie=request.form.get("Entre_texte2")
             message=cryptage_en_hexa(saisie,"decryptage")
-            ajouter_historique("Héxadécimal", saisie, message,date)
+            if saisie :
+                ajouter_historique("Héxadécimal", saisie, message,date)
             return render_template('Hexadecimal.html',resultat3=message)
         
     return render_template('Hexadecimal.html')
@@ -132,7 +133,8 @@ def trithemus():
         else:
             saisie=request.form.get("Entre_texte2")
             message=chiffre_de_Trithémius(saisie,"decryptage")
-            ajouter_historique("Trithémius", saisie,message,date)
+            if saisie :
+                ajouter_historique("Trithémius", saisie,message,date)
             return render_template('Chiffre_de_Trithémius.html',resultat2=message)
         
     return render_template('Chiffre_de_Trithémius.html')
