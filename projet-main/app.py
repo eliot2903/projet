@@ -37,54 +37,45 @@ def jeu():
 
 @app.route('/vernam', methods=['GET', 'POST'])
 def vernam():
-    message = ""
-    saisie = "" 
-    cle = ""
-
     if request.method == 'POST':
-        saisie = request.form.get("Entre_texte")
         date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         
-        if saisie:
-            message = Chiffre_de_Vernam(saisie)
-            ajouter_historique("Vernam", saisie, message[0],date) 
-            return render_template('Chiffre_de_Vernam.html', resultat=message[1], resultat2=message[0])
+        if "Entre_texte" in request.form:
+            saisie = request.form.get("Entre_texte")
+            if saisie:
+                message = Chiffre_de_Vernam(saisie)
+                ajouter_historique("Vernam", saisie, message[0], date) 
+                return render_template('Chiffre_de_Vernam.html', resultat=message[1], resultat2=message[0])
         
-        else:
+        elif "Entre_texte2" in request.form:
             saisie = request.form.get("Entre_texte2")
             cle = request.form.get("Cle2")
-
             if saisie and cle:
-                
-                message=Chiffre_de_Vernam(saisie,cle,"décryptage")
-                ajouter_historique("Vernam", saisie, message,date)
+                message = Chiffre_de_Vernam(saisie, cle, "décryptage")
+                ajouter_historique("Vernam", saisie, message, date)
                 return render_template('Chiffre_de_Vernam.html', resultat3=message)
             
     return render_template('Chiffre_de_Vernam.html')
 
 @app.route('/vigenere', methods=['GET', 'POST'])
 def vigenere():
-    message = ""
-    saisie = "" 
-    cle = ""
-
     if request.method == 'POST':
-        saisie = request.form.get("Entre_texte")
-        cle=request.form.get("Cle")
         date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
-        if saisie and cle:
-            message = chiffre_de_vigenère(saisie,cle)
-            ajouter_historique("Vigenère", saisie, message,date) 
-            return render_template('Chiffre_de_Vigenère.html', resultat=message)
+        if "Entre_texte" in request.form:
+            saisie = request.form.get("Entre_texte")
+            cle = request.form.get("Cle")
+            if saisie and cle:
+                message = chiffre_de_vigenère(saisie, cle)
+                ajouter_historique("Vigenère", saisie, message, date) 
+                return render_template('Chiffre_de_Vigenère.html', resultat=message)
         
-        else:
+        elif "Entre_texte2" in request.form:
             saisie = request.form.get("Entre_texte2")
             cle = request.form.get("Cle2")
-
             if saisie and cle:
-                message=chiffre_de_vigenère(saisie,cle,"décryptage")
-                ajouter_historique("Vigenère", saisie, message,date)
+                message = chiffre_de_vigenère(saisie, cle, "décryptage")
+                ajouter_historique("Vigenère", saisie, message, date)
                 return render_template('Chiffre_de_Vigenère.html', resultat2=message)
             
     return render_template('Chiffre_de_Vigenère.html')

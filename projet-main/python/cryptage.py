@@ -73,10 +73,15 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
     Si la clé existe on en trouve une autre sinon on l'écrit dans le fichier
     """
     if texte :
+        texte_sans_espace=texte.replace(" ","")
+        if not texte_sans_espace:
+            if mode=="cryptage":
+                return texte, ""
+            else:
+                return texte
         alphabet_min=string.ascii_lowercase
         alphabet_maj=string.ascii_uppercase
         if cle==None:
-            texte_sans_espace=texte.replace(" ","")
             while True:
                 cle = ""
                 for i in range(len(texte_sans_espace)):
