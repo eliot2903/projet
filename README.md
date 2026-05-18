@@ -6,12 +6,12 @@ Ce projet est une application web interactive développée avec **Flask** qui pe
 
 ## ✨ Fonctionnalités
 * `Chiffre de Vigenère` : Cryptage et décryptage de textes à l'aide d'une clé alphabétique.
-* **Chiffre de Vernam** : Utilisation d'une clé à usage unique et aléatoire de la même longueur que le message pour une sécurité maximale.
-* **Chiffre de Trithémius** : Chiffrement par décalage progressif automatique (sans clé).
-* **Conversion Hexadécimale** : Transformation de texte clair en base 16 et inversement.
-* **Gestion des clés** : Génération automatique de clés pour Vernam et vérification de leur unicité via une base de données (`cle.db`) et un fichier de sauvegarde (`cle.txt`).
-* **Historique des messages** : Suivi des 10 dernières opérations de chiffrement stockées en base de données SQLite.
-* **Mode Jeu** : Un module interactif pour s'entraîner à décoder des messages en hexadécimal.
+* `Chiffre de Vernam` : Utilisation d'une clé à usage unique et aléatoire de la même longueur que le message pour une sécurité maximale.
+* `Chiffre de Trithémius` : Chiffrement par décalage progressif automatique (sans clé).
+* `Conversion Hexadécimale` : Transformation de texte clair en base 16 et inversement.
+* `Gestion des clés` : Génération automatique de clés pour Vernam et vérification de leur unicité via une base de données (`cle.db`) et un fichier de sauvegarde (`cle.txt`).
+* `Historique des messages` : Suivi des 10 dernières opérations de chiffrement stockées en base de données SQLite.
+* `Mode Jeu` : Un module interactif pour s'entraîner à décoder des messages en hexadécimal.
 
 ## 🛠 Technologies utilisées
 * **Back-end** : Python 3, Flask, SQLite3.
