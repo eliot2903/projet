@@ -11,7 +11,7 @@ Ce projet est une application web interactive développée avec **Flask** qui pe
 * **Conversion Hexadécimale** : Transformation de texte clair en base 16 et inversement.
 * **Gestion des clés** : Génération automatique de clés pour Vernam et vérification de leur unicité via une base de données (`cle.db`) et un fichier de sauvegarde (`cle.txt`).
 * **Historique des messages** : Suivi des 10 dernières opérations de chiffrement stockées en base de données SQLite.
-* **Mode "Teste-toi" (Jeu)** : Un module interactif pour s'entraîner à décoder des messages en hexadécimal.
+* **Mode Jeu** : Un module interactif pour s'entraîner à décoder des messages en hexadécimal.
 
 ## 🛠 Technologies utilisées
 * **Back-end** : Python 3, Flask, SQLite3.
