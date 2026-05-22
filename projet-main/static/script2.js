@@ -59,7 +59,7 @@ const mots = [
     let rx = -100, ry = -100;
     const LAG = 0.08;
 
-    // Trail plus gros — 14 points, taille de départ 10px
+    
     const TRAIL_COUNT = 14;
     const TRAIL_SIZE  = 10;
     const trails = [];
@@ -106,7 +106,6 @@ const mots = [
         t.el.style.top  = t.y + 'px';
 
         const dist = Math.hypot(mx - t.x, my - t.y);
-        // Opacité plus forte (0.6 max) et diminue moins vite
         const opacity = Math.max(0, (0.6 - i / TRAIL_COUNT * 0.55) - dist * 0.001);
         t.el.style.opacity = opacity;
 

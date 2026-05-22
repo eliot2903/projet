@@ -1,10 +1,8 @@
 * {
     box-sizing: border-box;
 }
-html, body {
-    cursor: url("curseur.ico"), default;
-    /* just change the cursor.ico path to your location */
-}
+  
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -13,7 +11,7 @@ body {
     color: #FFD700;
 }
 
-/* HEADER */
+
 header {
     display: flex;
     align-items: center;
@@ -21,7 +19,7 @@ header {
     padding: 20px 40px;
 }
 
-/* LOGO */
+
 .logo {
     font-size: 22px;
     font-weight: bold;
@@ -40,7 +38,7 @@ nav a:hover {
     color: rgb(179, 178, 178);
 }
 
-/* SECTION PRINCIPALE */
+
 .main {
     display: flex;
     align-items: center;
@@ -48,7 +46,7 @@ nav a:hover {
     height: 80vh;
 }
 
-/* CARTE */
+
 .card {
     background: #111;
     padding: 40px;
@@ -64,18 +62,18 @@ a{
 a:hover{
     color: rgb(179, 178, 178);
 }
-/* TITRE */
+
 h1 {
     margin-bottom: 20px;
 }
 
-/* TEXTE */
+
 p {
     line-height: 1.6;
     color: #ddd;
 }
 
-/* IMAGE LOGO */
+
 .logo-img {
     width: 120px;
     margin-bottom: 20px;
@@ -84,10 +82,10 @@ a:visited {
     color: FFD700;
 }
 footer {
-    position: relative; /* nécessaire pour que top fonctionne */
+    position: relative; 
     top: -50px;
     text-align: center;
-    color: #FFD700; /* ajout du # pour une couleur valide */
+    color: #FFD700; 
     font-size: 10px;
     text-shadow: 1px 1px 2px rgb(75, 75, 75);
 }

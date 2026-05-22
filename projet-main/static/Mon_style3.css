@@ -1,9 +1,9 @@
-/* RESET */
+
 * {
     box-sizing: border-box;
 }
 
-/* BODY */
+
 body {
     margin: 0;
     font-family: 'Segoe UI', sans-serif;
@@ -14,14 +14,14 @@ body {
     flex-direction: column;
 }
 
-/* TITRE */
+
 h1 {
 	padding-left:60px;
     margin-top: 40px;
     font-size: 3em;
     text-shadow: 0 0 10px #FFD700;
 }
-/* MENU */
+
 header {
     display: flex;
     align-items: center;
@@ -29,13 +29,13 @@ header {
     padding: 20px 40px;
 }
 
-/* LOGO */
+
 .logo {
     font-size: 22px;
     font-weight: bold;
 }
 
-/* MENU */
+
 nav a {
     margin-left: 20px;
     text-decoration: none;
@@ -47,14 +47,14 @@ nav a:hover {
     color: #00aa00;
 }
 
-/* SECTION PRINCIPALE */
+
 .main {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 80vh;
 }
-/* CONTENEUR PRINCIPAL */
+
 .card {
     margin-top: 40px;
     display: flex;
@@ -63,7 +63,7 @@ nav a:hover {
     justify-content: center;
 }
 
-/* ZONE JEU */
+
 .jeu {
     background: #111;
     padding: 25px;
@@ -73,7 +73,7 @@ nav a:hover {
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
-/* INPUT */
+
 .jeu input {
     padding: 10px;
     width: 220px;
@@ -83,7 +83,7 @@ nav a:hover {
     text-align: center;
 }
 
-/* BOUTON */
+
 .jeu button {
     margin-top: 10px;
     padding: 10px 20px;
@@ -97,12 +97,12 @@ nav a:hover {
     background-color: #e6c200;
 }
 
-/* RESULTAT */
+
 #resultat {
     margin-top: 15px;
 }
 
-/* TABLEAU */
+
 .card2 {
     background: #111;
     padding: 25px;
@@ -112,7 +112,7 @@ nav a:hover {
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
 }
 
-/* TABLE */
+
 table {
     border-collapse: collapse;
     white-space: nowrap;
