@@ -58,6 +58,8 @@
     <textarea name="Res" id="output" readonly>{{resultat}}</textarea>
 
 </div>
+</form>
+<form method="POST">
 <div class="card2">
 
     <h1>🔓 Décryptage</h1>
@@ -70,10 +72,10 @@
     <div class="buttons">
         <button type="submit">Décrypter</button>
     </div>
-    </form>
     <label>Résultat</label>
     <textarea name="Res2" id="output" readonly>{{resultat2}}</textarea>
 </div>
+</form>
 <script src="{{ url_for('static', filename='Action.js') }}"></script>
 </body>
 </html>
