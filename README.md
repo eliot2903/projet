@@ -8,6 +8,8 @@ Ce projet est une application web interactive développée avec **Flask** qui pe
 * `Chiffre de Vigenère` : Cryptage et décryptage de textes à l'aide d'une clé alphabétique.
 * `Chiffre de Vernam` : Utilisation d'une clé à usage unique et aléatoire de la même longueur que le message pour une sécurité maximale.
 * `Chiffre de Trithémius` : Chiffrement par décalage progressif automatique (sans clé).
+* `Chiffre de César` : Chiffrement classique par décalage défini par l'utilisateur.
+* `ROT13` : Variante du chiffre de César avec un décalage fixe de 13 (chiffrement et déchiffrement symétriques).
 * `Conversion Hexadécimale` : Transformation de texte clair en base 16 et inversement.
 * `Gestion des clés` : Génération automatique de clés pour Vernam et vérification de leur unicité via une base de données (`cle.db`) et un fichier de sauvegarde (`cle.txt`).
 * `Historique des messages` : Suivi des 10 dernières opérations de chiffrement stockées en base de données SQLite.
@@ -41,7 +43,7 @@ python app.py
 ## 📁 Structure du projet
 
 * `app.py` : Serveur principal gérant les routes, le jeu et la logique de l'application.
-* `programme/cryptage.py` : Module contenant les algorithmes de chiffrement (Vigenère, Vernam, Trithémius, Hexa) et les tests unitaires (`assert`).
+* `programme/cryptage.py` : Module contenant les algorithmes de chiffrement (Vigenère, Vernam, Trithémius, Hexa, César, ROT13).
 * `programme/cle.db` & `programme/historique.db` : Bases de données SQLite pour garantir l'unicité des clés et stocker l'historique.
 * `programme/cle.txt` : Ancien registre de secours pour l'unicité des clés de Vernam.
 * `templates/` : Pages HTML (Accueil, interfaces de cryptage, descriptions, jeu et historique).
