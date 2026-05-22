@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <head>
 <link rel="icon" href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
@@ -53,16 +53,16 @@
         </div>
 
         <label>Clé</label>
-        <textarea name="Cle" id="output">{{resultat}}</textarea>
+        <textarea name="Cle" id="output-key" readonly>{{resultat}}</textarea>
 
         <label>Résultat</label>
-        <textarea name="Res" id="output" readonly>{{resultat2}}</textarea>
+        <textarea name="Res" id="output-result" readonly>{{resultat2}}</textarea>
     </form> </div>
 
 <div class="card2">
     <h1>🔓 Décryptage</h1>
     <form method="POST"> <label>Texte</label>
-        <textarea name="Entre_texte2" id="inputText" placeholder="Entrez votre texte à décrypter"></textarea>
+        <textarea name="Entre_texte2" id="inputText2" placeholder="Entrez votre texte à décrypter"></textarea>
 
         <label>Clé </label>
         <input name="Cle2" type="text" id="key" placeholder="Entrez la clé">
@@ -72,7 +72,7 @@
         </div>
 
         <label>Résultat</label>
-        <textarea name="Res2" id="output" readonly>{{resultat3}}</textarea>
+        <textarea name="Res2" id="output-result2" readonly>{{resultat3}}</textarea>
     </form>
 </div>
 

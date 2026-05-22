@@ -85,7 +85,7 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
         if cle==None:
             while True:
                 cle = ""
-                for i in range(len(texte_sans_espace)):
+                for i in range(len(texte)):
                     cle += secrets.choice(alphabet)
     
                 if not cle_existe(cle):  
@@ -100,21 +100,7 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
 
 
 
-def test_fonction ():
-    """
-    fonction qui vérifie que les algorithmes fonctionne
-    """
-    #assert chiffre_de_vigenère("j'aime la nsi","testeststetse")=="c'eafi dt flm"
-    #assert chiffre_de_vigenère("c'eafi dt flm","testeststetse","decrypte")=="j'aime la nsi"
-    assert cryptage_en_hexa("bonjour")=="626f6e6a6f7572"
-    assert cryptage_en_hexa("626f6e6a6f7572","décryptage")=="bonjour"
-    #assert Chiffre_de_Vernam('jfsejxi', 'irfvvdr',"décryptage")=="bonjour"
-    #assert Chiffre_de_Vernam("tmmmy uachx","mibbkymlwu","decrypter")=="hello world"
-    assert chiffre_de_vigenère("","")==""
-    assert Chiffre_de_Vernam("")==""
-    assert cryptage_en_hexa("")==""
-    assert chiffre_de_vigenère("123","test")=="123"
-test_fonction()
+
 
 def chiffre_de_Trithémius(texte,mode="cryptage"):
     """

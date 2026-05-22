@@ -1,9 +1,10 @@
 from flask import Flask, render_template, request
 from programme.cryptage import *
 import sqlite3
-from datetime import *
-import os 
 import datetime
+import os
+
+chemin = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'programme')
 
 
 
@@ -50,7 +51,7 @@ def vernam():
             saisie = request.form.get("Entre_texte2")
             cle = request.form.get("Cle2")
             if saisie and cle:
-                message = Chiffre_de_Vernam(saisie, cle, "décryptage")
+                message = Chiffre_de_Vernam(saisie, cle, "decryptage")
                 ajouter_historique("Vernam", saisie, message, date)
                 return render_template('Chiffre_de_Vernam.html', resultat3=message)
             
@@ -132,7 +133,9 @@ def trithemus():
                 message = chiffre_de_Trithémius(saisie, "decryptage")
                 ajouter_historique("Trithémius", saisie, message, date)
                 return render_template('Chiffre_de_Trithémius.html', resultat2=message)
-        
+
     return render_template('Chiffre_de_Trithémius.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
