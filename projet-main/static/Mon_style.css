@@ -39,12 +39,12 @@ body {
     box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
 }
 
-.titre{
+.titre {
     position: absolute;
-	top: 10%;
-	left: 41%;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
     -webkit-text-stroke: 1px rgb(0, 0, 0);
-    
 }
 
 
@@ -92,9 +92,9 @@ button {
 }
 
 button:hover {
-    background: #00aa00;
-    color: white;
     transform: scale(1.05);
+    background-color: rgb(179, 178, 178);
+    color :#000000
 }
 
 
@@ -134,16 +134,23 @@ background-color: #18c57d;
     right: 20px;
     border-radius: 5px;
     overflow: hidden;
+    z-index: 10;
+    
 }
 
 .menu a {
     color: #FFD700;
     padding: 10px 20px;
     text-decoration: none;
+    transition: 0.5s;
+
 }
 
 .menu a:hover {
-    background-color: #222222;
+    transform: scale(1.05);
+    background-color: rgb(179, 178, 178);
+    color :#000000;
+    border-radius: 12px;
 }
 
 
