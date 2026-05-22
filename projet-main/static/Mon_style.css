@@ -98,9 +98,13 @@ button:hover {
 }
 
 
-#output {
-    background: #eee;
-    color: black;    
+#output,
+#output2,
+#output-result,
+#output-result2,
+#output-key {
+    background: #222;
+    color: #fff;
 }
 
 

@@ -73,6 +73,18 @@ p {
     color: #ddd;
 }
 
+.test-algo {
+    margin-top: 24px;
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.test-algo a {
+    font-size: 14px;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(245, 197, 24, 0.5);
+}
+
 
 .logo-img {
     width: 120px;
@@ -88,6 +100,30 @@ footer {
     color: #FFD700; 
     font-size: 10px;
     text-shadow: 1px 1px 2px rgb(75, 75, 75);
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+button {
+    flex: 1;
+    margin: 5px;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #FFD700;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background-color: rgb(179, 178, 178);
+    color :#000000
 }
 
 * { cursor: none; margin: 0; padding: 0; }

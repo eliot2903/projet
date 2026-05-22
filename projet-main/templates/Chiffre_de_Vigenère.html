@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="fr">
 <head>
 <link rel="icon" href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
@@ -10,6 +11,8 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='Mon_style.css') }}">
 </head>
 
+<body>
+
 <div class="menu-btn" id="menu-btn">
     <span></span>
     <span></span>
@@ -18,7 +21,6 @@
 
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
-
 
 <div class="menu" id="menu">
   <button class="close-btn" id="close-btn">X</button>
@@ -34,49 +36,50 @@
 
 <div class="logo">
 	<a href="/jeu">
-        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="logo-img">
+        <img src="{{ url_for('static', filename='Logo.png') }}" alt="logo" class="logo-img">
 	</a>
 </div>
 
 <h1 class="titre">
     <p>🔐 Chiffre de Vigenère</p>
 </h1>
-<!-- CARTE -->
+
 <div class="card">
     <h1>🔐 Cryptage</h1>
-<form method="POST">
-    <label>Texte</label>
-    <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
+    <form method="POST">
+        <label>Texte</label>
+        <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
 
-    <label>Clé</label>
-    <input name="Cle" type="text" id="key" placeholder="Entrez la clé">
+        <label>Clé</label>
+        <input name="Cle" type="text" id="key" placeholder="Entrez la clé">
 
-    <div class="buttons">
-        <button type="submit">Crypter</button>
-    </div>
+        <div class="buttons">
+            <button type="submit">Crypter</button>
+        </div>
 
-    <label>Résultat</label>
-    <textarea name="Res" id="output" readonly>{{resultat}}</textarea>
-
+        <label>Résultat</label>
+        <textarea name="Res" id="output" readonly>{{resultat}}</textarea>
+    </form>
 </div>
-</form>
-<form method="POST">
+
 <div class="card2">
-
     <h1>🔓 Décryptage</h1>
+    <form method="POST">
+        <label>Code</label>
+        <textarea name="Entre_texte2" id="inputText2" placeholder="Entrez votre code crypté"></textarea>
 
-    <label>Code</label>
-    <textarea name="Entre_texte2" id="inputText2" placeholder="Entrez votre code crypté"></textarea>
+        <label>Clé</label>
+        <input name="Cle2" type="text" id="key2" placeholder="Entrez la clé">
 
-    <label>Clé</label>
-    <input name="Cle2" type="text" id="key2" placeholder="Entrez la clé">
-    <div class="buttons">
-        <button type="submit">Décrypter</button>
-    </div>
-    <label>Résultat</label>
-    <textarea name="Res2" id="output2" readonly>{{resultat2}}</textarea>
+        <div class="buttons">
+            <button type="submit">Décrypter</button>
+        </div>
+
+        <label>Résultat</label>
+        <textarea name="Res2" id="output2" readonly>{{resultat2}}</textarea>
+    </form>
 </div>
-</form>
+
 <script src="{{ url_for('static', filename='Action.js') }}"></script>
 </body>
 </html>

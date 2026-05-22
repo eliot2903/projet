@@ -8,17 +8,21 @@
         table { width: 100%; border-collapse: collapse; margin-top: 20px; color: white; }
         th, td { padding: 12px; border: 1px solid #FFD700; text-align: left; }
         th { background-color: rgba(255, 215, 0, 0.2); }
+        .confirmation { color: #00ffcc; margin-top: 15px; font-weight: bold; }
     </style>
 </head>
 <body>
 <header>
+    <div class="logo">
+        <img src="{{ url_for('static', filename='Logo.png') }}" alt="logo" class="logo-img">
+    </div>
     <nav>
         <a href="/">Page d'accueil</a>
         <a href="/vigenere">Chiffre de Vigenère</a>
         <a href="/vernam">Chiffre de Vernam</a>
         <a href="/hexa">Hexadécimal</a>
         <a href="/trithemius">Trithémius</a>
-        <a href="/desc_cesar">César</a>
+        <a href="/cesar">César</a>
         <a href="/desc_rot13">ROT13</a>
         <a href="#">Historique</a>
     </nav>
@@ -30,6 +34,9 @@
 <div class="main">
     <div class="card" style="width: 90%; max-width: 1000;">
         <h1> Historique des 10 derniers messages</h1>
+        {% if message %}
+        <p class="confirmation">{{ message }}</p>
+        {% endif %}
         <table>
             <thead>
                 <tr>
@@ -52,6 +59,11 @@
         </table>
     </div>
 </div>
+<form method="POST">
+    <div class="buttons">
+        <button type="submit">Supprimer l'historique</button>
+    </div>
+</form>
 <script src="{{ url_for('static', filename='Action2.js') }}"></script>
 </body>
 </html>

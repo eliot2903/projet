@@ -1,5 +1,4 @@
 import string
-import random
 import sqlite3
 import os
 import datetime
@@ -18,11 +17,11 @@ def chiffre_de_vigenère(texte:str,cle:str,mode="cryptage"):
             alphabet_min=string.ascii_lowercase
             alphabet_maj=string.ascii_uppercase
             cle=cle.replace(" ","")
-            if not cle :
-                return texte
+            if not cle:
+                return None
             for i in cle:
                 if i not in alphabet_maj and i not in alphabet_min:
-                    return texte
+                    return None
             mot_crypté=""
             indice_a=None
             indice_b=None
@@ -227,5 +226,12 @@ def ajouter_historique(methode, original, resultat,date):
         INSERT INTO historique (methode, texte_original, resultat,date)
         VALUES (?, ?, ?,?)
     ''', (methode, original, resultat,date))
+    conn.commit()
+    conn.close()
+
+def supprimer_historique():
+    conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
+    cursor = conn.cursor()
+    cursor.execute('DELETE FROM historique')
     conn.commit()
     conn.close()
