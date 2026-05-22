@@ -41,9 +41,9 @@ python app.py
 ## 📁 Structure du projet
 
 * `app.py` : Serveur principal gérant les routes, le jeu et la logique de l'application.
-* `python/cryptage.py` : Module contenant les algorithmes de chiffrement (Vigenère, Vernam, Trithémius, Hexa) et les tests unitaires (`assert`).
-* `python/cle.db` & `python/historique.db` : Bases de données SQLite pour garantir l'unicité des clés et stocker l'historique.
-* `python/cle.txt` : Registre de secours pour l'unicité des clés de Vernam.
+* `programme/cryptage.py` : Module contenant les algorithmes de chiffrement (Vigenère, Vernam, Trithémius, Hexa) et les tests unitaires (`assert`).
+* `programme/cle.db` & `programme/historique.db` : Bases de données SQLite pour garantir l'unicité des clés et stocker l'historique.
+* `programme/cle.txt` : Ancien registre de secours pour l'unicité des clés de Vernam.
 * `templates/` : Pages HTML (Accueil, interfaces de cryptage, descriptions, jeu et historique).
 * `static/` : Fichiers de style (CSS multiples) et scripts JavaScript pour l'interactivité et Logo .
 
