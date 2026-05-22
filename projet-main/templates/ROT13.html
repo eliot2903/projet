@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<head>
+<link rel="icon" href="data:image/svg+xml,
+<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
+<text y='0.9em' font-size='90'>🔐</text>
+</svg>">
+<meta charset="UTF-8">
+<title>ROT13</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='Mon_style.css') }}">
+</head>
+
+<body>
+
+<div class="menu-btn" id="menu-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="menu" id="menu">
+    <button class="close-btn" id="close-btn">X</button>
+    <a href="/">Page d'accueil</a>
+    <a href="/vigenere">Chiffre de Vigenère</a>
+    <a href="/vernam">Chiffre de Vernam</a>
+    <a href="/hexa">Hexadécimal</a>
+    <a href="/trithemius">Trithémius</a>
+    <a href="/cesar">Chiffre de César</a>
+    <a href="#">ROT13</a>
+    <a href="/historique">Historique</a>
+</div>
+
+<div class="logo">
+    <a href="/jeu">
+        <img src="{{ url_for('static', filename='logo.png') }}" alt="logo" class="logo-img">
+    </a>
+</div>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<h1 class="titre">
+    <p>🔐 ROT13</p>
+</h1>
+
+<!-- CARTE 1 -->
+<div class="card">
+    <h1>🔐 Chiffrer</h1>
+    <form method="POST">
+        <label>Texte</label>
+        <textarea name="Entre_texte" id="inputText" placeholder="Entrez votre message"></textarea>
+
+        <div class="buttons">
+            <button type="submit">Chiffrer</button>
+        </div>
+
+        <label>Résultat</label>
+        <textarea name="Res" id="output-result" readonly>{{resultat}}</textarea>
+    </form>
+</div>
+
+<!-- CARTE 2 -->
+<div class="card2">
+    <h1>🔓 Déchiffrer</h1>
+    <form method="POST">
+        <label>Texte</label>
+        <textarea name="Entre_texte2" id="inputText2" placeholder="Entrez votre texte ROT13"></textarea>
+
+        <div class="buttons">
+            <button type="submit">Déchiffrer</button>
+        </div>
+
+        <label>Résultat</label>
+        <textarea name="Res2" id="output-result2" readonly>{{resultat2}}</textarea>
+    </form>
+</div>
+
+<script src="{{ url_for('static', filename='Action.js') }}"></script>
+</body>
+</html>

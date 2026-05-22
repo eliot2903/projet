@@ -102,7 +102,7 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
 
 
 
-def chiffre_de_Trithémius(texte,mode="cryptage"):
+def chiffre_de_Trithémius(texte : str ,mode : str ="cryptage"):
     """
     cette fonction utilise le chiffre de trithémius pour cypter/décrypter un texte. cette algorithme est similaire au chiffre de vigenere mais ne nécéssite pas de clé.
     chaque lettre du texte est décaler par son indice dans la phrase 
@@ -133,6 +133,31 @@ def chiffre_de_Trithémius(texte,mode="cryptage"):
         if indice>=26:
             indice=0
     return texte_final
+
+def chiffre_de_cesar(texte : str,numero : int ,mode : str ="cryptage"):
+    texte_final=""
+    alphabet_min=string.ascii_lowercase
+    alphabet_maj=string.ascii_uppercase
+    for i in texte:
+        if i in alphabet_maj:
+            indice=alphabet_maj.index(i)
+            if mode=="cryptage" :
+                texte_final+=alphabet_maj[(indice+numero)%26]
+            else:
+                texte_final+=alphabet_maj[(indice-numero)%26]
+        elif i in alphabet_min:
+            indice=alphabet_min.index(i)
+            if mode=="cryptage":
+                texte_final+=alphabet_min[(indice+numero)%26]
+            else:
+                texte_final+=alphabet_min[(indice-numero)%26]
+        else:
+            texte_final+=i
+    return texte_final
+
+def ROT13(texte : str,mode:str="cryptage"):
+    return chiffre_de_cesar(texte,13,mode)
+
 
 chemin = os.path.dirname(os.path.abspath(__file__))
 

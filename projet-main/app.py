@@ -31,6 +31,14 @@ def desc_vigenere():
 def desc_trithemius():
     return render_template("Description_Trithémius.html")
 
+@app.route('/desc_cesar')
+def desc_cesar():
+    return render_template("Description_César.html")
+
+@app.route('/desc_rot13')
+def desc_rot13():
+    return render_template("Description_ROT13.html")
+
 @app.route('/jeu')
 def jeu():
     return render_template("Jeu.html")
@@ -74,7 +82,7 @@ def vigenere():
             saisie = request.form.get("Entre_texte2")
             cle = request.form.get("Cle2")
             if saisie and cle:
-                message = chiffre_de_vigenère(saisie, cle, "décryptage")
+                message = chiffre_de_vigenère(saisie, cle, "decryptage")
                 ajouter_historique("Vigenère", saisie, message, date)
                 return render_template('Chiffre_de_Vigenère.html', resultat2=message)
             
@@ -135,6 +143,60 @@ def trithemus():
                 return render_template('Chiffre_de_Trithémius.html', resultat2=message)
 
     return render_template('Chiffre_de_Trithémius.html')
+
+
+@app.route('/cesar', methods=['GET', 'POST'])
+def cesar():
+    if request.method == 'POST':
+        date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        if "Entre_texte" in request.form:
+            saisie = request.form.get("Entre_texte")
+            decalage = request.form.get("Decalage")
+            if saisie and decalage:
+                try:
+                    decalage = int(decalage)
+                    message = chiffre_de_cesar(saisie, decalage)
+                    ajouter_historique("César", saisie, message, date)
+                    return render_template('Chiffre_de_César.html', resultat=message)
+                except ValueError:
+                    return render_template('Chiffre_de_César.html', resultat="Erreur : décalage invalide")
+
+        elif "Entre_texte2" in request.form:
+            saisie = request.form.get("Entre_texte2")
+            decalage = request.form.get("Decalage2")
+            if saisie and decalage:
+                try:
+                    decalage = int(decalage)
+                    message = chiffre_de_cesar(saisie, decalage, "decryptage")
+                    ajouter_historique("César", saisie, message, date)
+                    return render_template('Chiffre_de_César.html', resultat2=message)
+                except ValueError:
+                    return render_template('Chiffre_de_César.html', resultat2="Erreur : décalage invalide")
+
+    return render_template('Chiffre_de_César.html')
+
+
+@app.route('/rot13', methods=['GET', 'POST'])
+def rot13():
+    if request.method == 'POST':
+        date = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+        if "Entre_texte" in request.form:
+            saisie = request.form.get("Entre_texte")
+            if saisie:
+                message = ROT13(saisie)
+                ajouter_historique("ROT13", saisie, message, date)
+                return render_template('ROT13.html', resultat=message)
+
+        elif "Entre_texte2" in request.form:
+            saisie = request.form.get("Entre_texte2")
+            if saisie:
+                message = ROT13(saisie, "decryptage")
+                ajouter_historique("ROT13", saisie, message, date)
+                return render_template('ROT13.html', resultat2=message)
+
+    return render_template('ROT13.html')
 
 
 if __name__ == '__main__':
