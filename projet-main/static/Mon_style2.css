@@ -1,5 +1,8 @@
 * {
     box-sizing: border-box;
+    cursor: none;
+    margin: 0;
+    padding: 0;
 }
   
 
@@ -91,7 +94,7 @@ p {
     margin-bottom: 20px;
 }
 a:visited {
-    color: FFD700;
+    color: #FFD700;
 }
 footer {
     position: relative; 
@@ -126,7 +129,7 @@ button:hover {
     color :#000000
 }
 
-* { cursor: none; margin: 0; padding: 0; }
+
 
     #cursor {
       position: fixed;

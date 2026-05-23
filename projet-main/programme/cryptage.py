@@ -91,6 +91,8 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
                     ajouter_cle(cle)
                     break
         code=chiffre_de_vigenère(texte,cle,mode)
+        if code is None:
+            return None
         if mode=="cryptage":
             return code,cle
         else:
@@ -129,8 +131,6 @@ def chiffre_de_Trithémius(texte : str ,mode : str ="cryptage"):
             indice+=1
         else:
             texte_final+=i
-        if indice>=26:
-            indice=0
     return texte_final
 
 def chiffre_de_cesar(texte : str,numero : int ,mode : str ="cryptage"):
@@ -165,30 +165,34 @@ def init_bd():
     Cette fonction initialiste les bases de données cle.db et historique.db
     """
     conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
-    cursor = conn.cursor()
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS cles (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        cle TEXT NOT NULL,
-        taille INTEGER NOT NULL
-    )
-    ''')
-    conn.commit()
-    conn.close()
+    try:
+        cursor = conn.cursor()
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS cles (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            cle TEXT NOT NULL,
+            taille INTEGER NOT NULL
+        )
+        ''')
+        conn.commit()
+    finally:
+        conn.close()
 
     conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
-    cursor = conn.cursor()
-    cursor.execute('''
-        CREATE TABLE IF NOT EXISTS historique (
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            methode TEXT NOT NULL,
-            texte_original TEXT NOT NULL,
-            resultat TEXT NOT NULL,
-            date TEXT NOT NULL
-        )
-    ''')
-    conn.commit()
-    conn.close()
+    try:
+        cursor = conn.cursor()
+        cursor.execute('''
+            CREATE TABLE IF NOT EXISTS historique (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                methode TEXT NOT NULL,
+                texte_original TEXT NOT NULL,
+                resultat TEXT NOT NULL,
+                date TEXT NOT NULL
+            )
+        ''')
+        conn.commit()
+    finally:
+        conn.close()
 
 init_bd()
 
@@ -197,41 +201,49 @@ def ajouter_cle(cle):
     Cette fonction rajoute une cle et sa taille dans la base de donnée cle.db
     """
     conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
-    cursor = conn.cursor()
-    cursor.execute('''
-        INSERT INTO cles (cle, taille)
-        VALUES (?, ?)
-    ''', (cle, len(cle)))
-    conn.commit()
-    conn.close()
+    try:
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO cles (cle, taille)
+            VALUES (?, ?)
+        ''', (cle, len(cle)))
+        conn.commit()
+    finally:
+        conn.close()
 
 def cle_existe(cle):
     """
     Cette fonction vérifie si une clé est déja enregistré
     """
     conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
-    cursor = conn.cursor()
-    cursor.execute('SELECT 1 FROM cles WHERE cle = ?', (cle,))
-    resultat = cursor.fetchone()
-    conn.close()
-    return resultat is not None
+    try:
+        cursor = conn.cursor()
+        cursor.execute('SELECT 1 FROM cles WHERE cle = ?', (cle,))
+        resultat = cursor.fetchone()
+        return resultat is not None
+    finally:
+        conn.close()
 
 def ajouter_historique(methode, original, resultat,date):
     """
     Cette fonction permet de sauvegarder l'historique des algorithmes utilisé et leur résultat dans la base de donnée historique.db
     """
     conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
-    cursor = conn.cursor()
-    cursor.execute('''
-        INSERT INTO historique (methode, texte_original, resultat,date)
-        VALUES (?, ?, ?,?)
-    ''', (methode, original, resultat,date))
-    conn.commit()
-    conn.close()
+    try:
+        cursor = conn.cursor()
+        cursor.execute('''
+            INSERT INTO historique (methode, texte_original, resultat,date)
+            VALUES (?, ?, ?,?)
+        ''', (methode, original, resultat,date))
+        conn.commit()
+    finally:
+        conn.close()
 
 def supprimer_historique():
     conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
-    cursor = conn.cursor()
-    cursor.execute('DELETE FROM historique')
-    conn.commit()
-    conn.close()
+    try:
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM historique')
+        conn.commit()
+    finally:
+        conn.close()

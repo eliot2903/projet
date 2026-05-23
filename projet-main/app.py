@@ -147,7 +147,7 @@ def hexa():
                 ajouter_historique("Héxadécimal", saisie, message, date)
                 return render_template('Hexadecimal.html', resultat3=message)
             except ValueError:
-                return render_template('Hexadecimal.html', resultat3="Erreur : Code hexadécimal invalide")
+                return render_template('Hexadecimal.html', resultat3="Erreur : Code hexadécimal invalide (vérifiez que le texte ne contient que des caractères 0-9 et A-F, en nombre pair)")
         
     return render_template('Hexadecimal.html')
 

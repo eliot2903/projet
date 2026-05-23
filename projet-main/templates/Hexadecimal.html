@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<html lang="fr">
 <head>
 <link rel="icon" href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
@@ -40,9 +41,7 @@
 <div id="cursor"></div>
 <div id="cursor-ring"></div>
 
-<h1 class="titre">
-    <p>🔐 Chiffrement en Héxadécimal</p>
-</h1>
+<h1 class="titre">🔐 Chiffrement en Héxadécimal</h1>
 <!-- CARTE 1 -->
 <div class="card">
     <h1>🔐 Cryptage</h1>
@@ -72,6 +71,7 @@
     </form>
 </div>
 
+<script src="{{ url_for('static', filename='cursor.js') }}"></script>
 <script src="{{ url_for('static', filename='Action.js') }}"></script>
 </body>
 </html>
