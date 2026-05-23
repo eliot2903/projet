@@ -61,6 +61,8 @@ def vernam():
             if not saisie:
                 return render_template('Chiffre_de_Vernam.html', resultat2="Erreur : entrez un texte")
             message = Chiffre_de_Vernam(saisie)
+            if message is None:
+                return render_template('Chiffre_de_Vernam.html', resultat2="Erreur : impossible de générer une clé unique, réessayez")
             ajouter_historique("Vernam", saisie, message[0], date) 
             return render_template('Chiffre_de_Vernam.html', resultat=message[1], resultat2=message[0])
         

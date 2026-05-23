@@ -4,7 +4,7 @@ import os
 import datetime
 import secrets 
 
-def chiffre_de_vigenère(texte:str,cle:str,mode="cryptage"):
+def chiffre_de_vigenère(texte:str,cle:str,mode : str ="cryptage"):
     """
     Cette fonction utilise le chiffre de vigenère pour crypter/décrypter une chaine de charactère.
     Pour fonctionner la fonction a besoin d'un texte et d'une clé toute les deux sous formes de chaines de caractères.
@@ -54,7 +54,7 @@ def chiffre_de_vigenère(texte:str,cle:str,mode="cryptage"):
             return mot_crypté
     return texte
 
-def cryptage_en_hexa(mot,mode="cryptage"):
+def cryptage_en_hexa(mot : str ,mode : str ="cryptage"):
     """
     Cette fonction tranforme un texte en héxadécimal ou l'inverse
     """
@@ -62,7 +62,8 @@ def cryptage_en_hexa(mot,mode="cryptage"):
         if mode=="cryptage":
             code=mot.encode('utf-8').hex()
         else:
-            code=bytes.fromhex(mot).decode('utf-8')
+            mot_hex = mot.replace(" ", "").replace("-", "")
+            code = bytes.fromhex(mot_hex).decode('utf-8')
         return code
     return mot
 
@@ -82,14 +83,16 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
                 return texte
         alphabet=string.ascii_lowercase+string.ascii_uppercase
         if cle==None:
-            while True:
+            max_tentatives = 10
+            for _ in range(max_tentatives):
                 cle = ""
-                for i in range(len(texte)):
+                for _ in range(len(texte)):
                     cle += secrets.choice(alphabet)
-    
-                if not cle_existe(cle):  
+                if not cle_existe(cle):
                     ajouter_cle(cle)
                     break
+            else:
+                return None
         code=chiffre_de_vigenère(texte,cle,mode)
         if code is None:
             return None
@@ -134,6 +137,9 @@ def chiffre_de_Trithémius(texte : str ,mode : str ="cryptage"):
     return texte_final
 
 def chiffre_de_cesar(texte : str,numero : int ,mode : str ="cryptage"):
+    """
+    Cette fonction utilise le chiffre de césar pour crypter un message
+    """
     texte_final=""
     alphabet_min=string.ascii_lowercase
     alphabet_maj=string.ascii_uppercase
@@ -154,7 +160,10 @@ def chiffre_de_cesar(texte : str,numero : int ,mode : str ="cryptage"):
             texte_final+=i
     return texte_final
 
-def ROT13(texte : str,mode:str="cryptage"):
+def ROT13(texte : str,mode : str="cryptage"):
+    """
+    Cette fonction utilise ROT13 pour crypter un message (Chiffre de césar mais décale tout de 13)
+    """
     return chiffre_de_cesar(texte,13,mode)
 
 
@@ -196,7 +205,7 @@ def init_bd():
 
 init_bd()
 
-def ajouter_cle(cle):
+def ajouter_cle(cle : str):
     """
     Cette fonction rajoute une cle et sa taille dans la base de donnée cle.db
     """
@@ -211,7 +220,7 @@ def ajouter_cle(cle):
     finally:
         conn.close()
 
-def cle_existe(cle):
+def cle_existe(cle : str):
     """
     Cette fonction vérifie si une clé est déja enregistré
     """
@@ -224,7 +233,7 @@ def cle_existe(cle):
     finally:
         conn.close()
 
-def ajouter_historique(methode, original, resultat,date):
+def ajouter_historique(methode : str , original : str, resultat : str ,date : str):
     """
     Cette fonction permet de sauvegarder l'historique des algorithmes utilisé et leur résultat dans la base de donnée historique.db
     """
@@ -240,6 +249,9 @@ def ajouter_historique(methode, original, resultat,date):
         conn.close()
 
 def supprimer_historique():
+    """
+    Cette fonction permet de suprimer l'historique dans la base de donné historique.db
+    """
     conn = sqlite3.connect(os.path.join(chemin, 'historique.db'))
     try:
         cursor = conn.cursor()
