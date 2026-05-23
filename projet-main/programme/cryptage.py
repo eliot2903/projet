@@ -96,7 +96,7 @@ def Chiffre_de_Vernam(texte:str,cle:str=None,mode:str="cryptage"):
         code=chiffre_de_vigenère(texte,cle,mode)
         if code is None:
             return None
-        if mode=="cryptage":
+        elif mode=="cryptage":
             return code,cle
         else:
             return code
