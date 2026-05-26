@@ -1,1 +1,0 @@
-// Le code du curseur personnalisé a été déplacé dans cursor.js
