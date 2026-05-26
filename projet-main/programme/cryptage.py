@@ -1,7 +1,6 @@
 import string
 import sqlite3
 import os
-import datetime
 import secrets 
 
 def chiffre_de_vigenère(texte:str,cle:str,mode : str ="cryptage"):
@@ -110,7 +109,7 @@ def chiffre_de_Trithémius(texte : str ,mode : str ="cryptage"):
     """
     cette fonction utilise le chiffre de trithémius pour cypter/décrypter un texte. cette algorithme est similaire au chiffre de vigenere mais ne nécéssite pas de clé.
     chaque lettre du texte est décaler par son indice dans la phrase 
-    Ex: mot = mpv car m+a=m o+b=u et t+c=v
+    Ex: mot = mpv car m+a=m o+b=p et t+c=v
     """
     alphabet_min=string.ascii_lowercase
     alphabet_maj=string.ascii_uppercase
@@ -222,7 +221,7 @@ def ajouter_cle(cle : str):
 
 def cle_existe(cle : str):
     """
-    Cette fonction vérifie si une clé est déja enregistré
+    Cette fonction vérifie si une clé est déja enregistré dans la base de donnée
     """
     conn = sqlite3.connect(os.path.join(chemin, 'cle.db'))
     try:
