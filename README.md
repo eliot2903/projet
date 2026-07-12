@@ -1,3 +1,41 @@
+# 🔐 Cryptography Platform - NSI Project
+
+## 📝 Description
+
+This project is an interactive web application developed with **Flask** that allows users to secure messages using several historical and computer-based encryption methods. It offers a modern interface to experiment with the **Vigenère Cipher**, the **Vernam Cipher**, the **Trithemius Cipher**, and **Hexadecimal** conversion.
+
+## ✨ Features
+
+* `Vigenère Cipher`: Encryption and decryption of texts using an alphabetic key.
+* `Vernam Cipher`: Use of a random, one-time key of the same length as the message for maximum security.
+* `Trithemius Cipher`: Encryption via automatic progressive shifting (keyless).
+* `Caesar Cipher`: Classic shift cipher defined by the user.
+* `ROT13`: A variant of the Caesar cipher with a fixed shift of 13 (symmetric encryption and decryption).
+* `Hexadecimal Conversion`: Transformation of plaintext into base-16 and vice versa.
+* `Key Management`: Automatic key generation for Vernam and uniqueness verification via a database (`cle.db`) and a backup file (`cle.txt`).
+* `Message History`: Tracking of the last 10 encryption operations stored in an SQLite database.
+* `Game Mode`: An interactive module to practice decoding messages in hexadecimal.
+
+## 🛠 Technologies Used
+
+* `Back-end`: Python 3, Flask, SQLite3.
+* `Front-end`: HTML5, CSS3 (with multiple style themes), and JavaScript.
+
+## 🚀 Installation and Launch
+
+### Prerequisites
+
+* Have Python installed on your machine.
+
+### Installation
+
+1. Install the Flask library:
+```bash
+pip install flask
+
+```
+
+
 ```markdown
 # 🔐 Plateforme de Cryptographie - Projet NSI
 
